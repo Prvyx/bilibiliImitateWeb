@@ -1,0 +1,12 @@
+/*h3的样式*/
+.contentStyle {
+    height: 338px;
+    color: #2b2b2b;
+    line-height: 580px;
+    text-align: center;
+    /*background-color: #364d79;*/
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top;
+    border-radius: 8px;
+}

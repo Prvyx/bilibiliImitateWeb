@@ -1,0 +1,12 @@
+.sendBarUl {
+    margin-top: 10px;
+    height: 20px;
+}
+.sendBarUl li {
+    display: inline-block;
+    float: left;
+    margin-left: -30px;
+    margin-right: 40px;
+    list-style: none;
+}
+

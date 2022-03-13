@@ -1,4 +1,10 @@
 .idea/
+mockData/
+node_modules/
+public/static
+问题/
+./开发遇到的问题.md
+./img.png
 # Compiled class file
 *.class
 
