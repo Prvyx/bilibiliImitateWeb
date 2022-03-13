@@ -1,0 +1,41 @@
+/*TopMenu��Ĭ����ʽ���޸�*/
+/*��ΪĬ��css��Ϊless���������css�ļ����԰�Ĭ����ʽ���ǵ�*/
+/*menu-item���*/
+.ant-menu-item, .ant-menu-submenu-title {
+    padding: 0 3px;
+}
+/*������*/
+.ant-input {
+    margin: 8px;
+    padding-left: 10px;
+    border-radius: 6px;
+}
+.ant-input {
+    margin-left: 20px;
+}
+/*����������ͼ��*/
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
+    top: 4px;
+    left: 20px;
+    border-radius: 6px;
+}
+/*������*/
+.top-menu-input {
+    width: 400px;
+}
+/*top_menu*/
+.top_menu {
+    margin: 0 20px;
+    height: 200px;
+    background: #ffffff url("/public/index.png") no-repeat top;
+    background-size: 120%;
+}
+
+/*ͷ��*/
+.avatar {
+    margin-left: 35px;
+}
+/*������*/
+.navMenu {
+
+}
