@@ -18,6 +18,7 @@ class ShowListRank extends Component {
         this.getShowListRank(this.props.id)
     }
     render() {
+        console.log(this.state)
         return (
             <Sider style={{marginLeft: 30,marginRight: 111,maxWidth: 300,width: 300,backgroundColor: "#ffffff",
             }}>

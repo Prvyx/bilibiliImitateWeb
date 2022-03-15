@@ -19,35 +19,37 @@ const {Content,Sider} = Layout
 class Video extends Component {
     state={}
 
-    analyzeLocation(location){
-        const id=location.pathname.slice(7)
-        const params=location.search.slice(1)
-        const p=qs.parse(params).p
+    analyzeLocation(location) {
+        const id = location.pathname.slice(7)
+        this.setState({id: id},()=>{
+            this.getVideoData()
+        })
     }
+
     getVideoData=()=>{
         let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/"
-        let _api="video_api"
+        let _api=`video${this.state.id}_api`
         axios.get(_url+_api)
             .then(_d=>{
-                this.setState({videoData:_d.data.results})
+                this.setState({videoData:_d.data.results},()=>{
+                    this.render()
+                })
             })
     }
     componentDidMount() {
         const {location}=this.props
         this.analyzeLocation(location)
-        this.getVideoData()
     }
+
 
     render() {
         const videoData=this.state.videoData||Object //||Object神来之笔,此处不能null
-        console.log(videoData)
         const sanlian={
             thumbUpCount:videoData.thumbUpCount,
             coinCount:videoData.coinCount,
             starCount:videoData.starCount,
             forwardCount:videoData.forwardCount
         }
-        console.log(videoData)
         return (
             <div>
                 <Layout style={{margin: '0 100px',width: 1060}}>
@@ -66,7 +68,7 @@ class Video extends Component {
                     </Content>
                     <Sider width={370} style={{backgroundColor: "#ffffff"}}>
                         <UpInfo name={videoData.upInfo}/>
-                        <VideoList id={videoData.id}/>
+                        <VideoList id={videoData.id} parts={videoData.parts}/>
                     </Sider>
                 </Layout>
                 <InfoText introduce={videoData.introduce}/>
