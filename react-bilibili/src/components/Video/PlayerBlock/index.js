@@ -4,6 +4,7 @@ import qs from 'querystring'
 
 class PlayerBlock extends Component {
     render() {
+        console.log(`我被调用一次`)
         console.log(this.props)
         const {search}=this.props
         let params=(search!==undefined)?search.slice(1):this.props.location.search.slice(1)

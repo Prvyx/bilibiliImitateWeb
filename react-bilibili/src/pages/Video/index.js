@@ -27,7 +27,9 @@ class Video extends Component {
                             <Descriptions.Item span={4} label="日期">2020-07-26 12:00:54</Descriptions.Item>
                             <Descriptions.Item span={5} label="转载权限">未经作者授权，禁止转载</Descriptions.Item>
                         </Descriptions>
-                        <PlayerBlock search={this.props.location.search}/>
+                        <Switch>
+                            <Route path={`/video/BV1wy4y1D7JT`} component={PlayerBlock}/>
+                        </Switch>
                         <SendBar/>
                         <ToolbarReport/>
                     </Content>
@@ -38,9 +40,7 @@ class Video extends Component {
                 </Layout>
                 <InfoText/>
                 <CommentBlock/>
-                <Switch>
-                    <Route path={`/video/BV1wy4y1D7JT`} component={PlayerBlock}/>
-                </Switch>
+
             </div>
         );
     }
