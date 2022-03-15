@@ -39,7 +39,8 @@ import Knowledge from "./pages/Section/Knowledge";
 import Information from "./pages/Section/CatalogSection/Information";
 import More from "./pages/Section/CatalogSection/More";
 import Dance from './pages/Section/Dance'
-import Video from "./pages/Video";
+import Video from "./pages/VideoPage";
+import VideoPage from "./pages/VideoPage";
 const { Footer } = Layout;
 
 function App() {
@@ -78,7 +79,7 @@ function App() {
             <Route path={`/information`} component={Information}/>
             <Route path={`/more`} component={More}/>
             <Route path={`/foods`} component={Foods}/>
-            <Route path={`/video`} component={Video} />
+            <Route path={`/video`} component={VideoPage} />
 
             <Route path={`/`} component={Index}/>
             <Redirect to={`/`}/>

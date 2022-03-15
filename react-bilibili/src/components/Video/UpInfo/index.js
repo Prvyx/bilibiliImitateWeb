@@ -12,7 +12,7 @@ class UpInfo extends Component {
                     </div>
                 </Col>
                 <Col flex="auto">
-                    <div style={{textAlign:"left",height:"50%"}}><span>青空の霞光</span></div>
+                    <div style={{textAlign:"left",height:"50%"}}><span>{this.props.name}</span></div>
                     <div style={{textAlign:"left",height:"50%"}}>
                         <Button shape={"round"}>充电</Button>
                         <Button shape={"round"}>+关注 1.0万</Button>

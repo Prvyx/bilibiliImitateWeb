@@ -2,47 +2,11 @@ import React, {Component} from 'react';
 import {Layout,Card,Row,Col,List,Divider} from 'antd'
 import './index.css'
 import axios from "axios";
+import ShowListRank from "./ShowListRank";
 
 const {Content,Sider} = Layout
 const {Meta} = Card
-const data = [
-    {
-        id:'0',
-        title: '恋 爱 中 的 女 人 潜 力 能 有 多 大 ？',
-    },
-    {
-        id:'1',
-        title: '想不明白，动画有什么好看的',
-    },
-    {
-        id:'2',
-        title: '七七生日快乐！',
-    },
-    {
-        id:'3',
-        title: '当了一年虚拟主播，我开了家公司',
-    },
-    {
-        id:'4',
-        title: 'Kizuna AI The Last Live “hello, world 2022”',
-    },
-    {
-        id:'5',
-        title: '蜜汁起跑姿势',
-    },
-    {
-        id:'6',
-        title: '哎呀，你们怎么都在跟我道歉呢？╭(╯^╰)╮',
-    },
-    {
-        id:'7',
-        title: '【原神手书】 甘雨：让子弹飞会 【耗时一千小时】',
-    },
-    {
-        id:'8',
-        title: '坏 女 人',
-    },
-];
+
 class ShowList extends Component {
     state={}
 
@@ -96,24 +60,7 @@ class ShowList extends Component {
                         </div>
                     </Card>
                 </Content>
-                <Sider style={{marginLeft: 30,marginRight: 111,maxWidth: 300,width: 300,backgroundColor: "#ffffff",
-                    }}>
-                    <Divider orientation="left" orientationMargin={12} style={{backgroundColor: ""}}>排行榜</Divider>
-                    <List
-                        style={{backgroundColor: "",marginTop: -10,marginLeft: 10,paddingRight: 5}}
-                        itemLayout="horizontal"
-                        dataSource={data}
-                        renderItem={item => (
-                            <List.Item style={{padding:"10px auto"}}>
-                                <List.Item.Meta
-                                    style={{fontSize: 13}}
-                                    title={<a className={`aStyle`} href="https://www.bilibili.com/">{parseInt(item.id)+1}. {item.title}</a>}
-                                    // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                                />
-                            </List.Item>
-                        )}
-                    />
-                </Sider>
+                <ShowListRank id={this.props.id}/>
             </Layout>
         );
     }

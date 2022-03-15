@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import {Link, Route,Switch} from 'react-router-dom'
 import { List, message, Avatar, Skeleton, Divider } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Video from "../../../pages/Video";
-import PlayerBlock from "../PlayerBlock";
+import axios from "axios";
 
-const VideoList = () => {
+const VideoList = (paramObj) => {
+    let id=paramObj.id||'BV1wy4y1D7JT'
+    console.log(id)
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
 
@@ -14,15 +15,22 @@ const VideoList = () => {
             return;
         }
         setLoading(true);
-        fetch('https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/parts_api')
-            .then(res => res.json())
-            .then(body => {
-                setData([...data,...body.results]);
-                setLoading(false);
+        let _url=`https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/part${id}_api`
+        console.log(_url)
+        axios.get(_url)
+            .then(_d=>{
+                setData([...data,..._d.data.results])
+                setLoading(false)
             })
-            .catch(() => {
-                setLoading(false);
-            });
+        // fetch(_url)
+        //     .then(res => res.json())
+        //     .then(body => {
+        //         setData([...data,...body.results]);
+        //         setLoading(false);
+        //     })
+        //     .catch(() => {
+        //         setLoading(false);
+        //     });
     };
 
     useEffect(() => {
@@ -55,7 +63,7 @@ const VideoList = () => {
                                 style={{overflow:"hidden",whiteSpace: "nowrap",textOverflow: "ellipsis"}}
                                 // avatar={<Avatar src={item.picture.large} />}
                                 // title={<a href="https://ant.design">{item.name.last}</a>}
-                                description={<Link to={`/video/BV1wy4y1D7JT?p=${item.id}`}>P{item.id} {item.part}</Link>}
+                                description={<Link to={`/video/${id}?p=${item.id}`}>P{item.id} {item.part}</Link>}
                             />
                             <div>{item.duration}</div>
                         </List.Item>

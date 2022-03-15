@@ -1,1 +1,46 @@
-前后端的接口：
+### 所谓接口，就是用来获取数据
+### 方式：将一个SPA页面分为多个组件，每个组件包含一个（非多个！）api接口
+### 首页组件
+#### 1.导航栏组件
+- 番剧组件
+- 直播组件
+- 游戏中心组件
+- 会员购组件
+- 漫画组件
+- 赛事组件
+- 搜索组件
+    - 接口：
+- 用户组件
+  - 接口：
+- ...
+- 大会员组件
+- 消息组件
+- 动态组件
+- 收藏组件
+- 历史组件
+- 创作中心组件
+- 投稿组件
+#### 2.目录组件
+- 动态组件
+- 热门组件
+- 频道组件
+- 番剧组件
+- 国创组件
+- ...
+#### 3.推荐组件
+- 广告容器组件
+    - 接口：https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/adverContainer_api
+- 推荐容器组件
+    - 接口：https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/recommendContainer_api
+#### 4.ShowList组件
+- ShowList的推荐组件
+    - 接口：https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/xxx(eg:competition)_api
+- 排行榜组件
+    - 接口：https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/xxx(eg:competition)Rank_api
+#### 5.视频video组件
+- PlayerBlock组件
+- InfoText组件
+- VideoList组件
+- UpInfo组件
+- SendBar组件（弹幕等设置）
+- ToolbarReport组件（三连选项）

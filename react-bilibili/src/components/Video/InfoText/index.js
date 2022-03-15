@@ -5,7 +5,7 @@ class InfoText extends Component {
     render() {
         return (
             <div style={{marginLeft:110,marginTop:20 ,width: 600}}>
-                点赞过20万，立刻更新下一期！
+                {this.props.introduce}
                 <Divider/>
             </div>
         );

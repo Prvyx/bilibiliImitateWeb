@@ -4,8 +4,6 @@ import qs from 'querystring'
 
 class PlayerBlock extends Component {
     render() {
-        console.log(`我被调用一次`)
-        console.log(this.props)
         const {search}=this.props
         let params=(search!==undefined)?search.slice(1):this.props.location.search.slice(1)
         if(params===''){
@@ -18,7 +16,7 @@ class PlayerBlock extends Component {
         // const {search}=this.props.location||null
         // console.log(search)
         // const {p}=qs.parse(search.slice(1))
-        let url='/static/video/BV1wy4y1D7JT/'+p+'.mp4'
+        let url=`/static/video/BV1wy4y1D7JT/${p}.mp4`
         console.log(url)
         // console.log('url:',url)
         // console.log(qs.parse(this.props.location.search))
