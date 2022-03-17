@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import Recommend from "../../components/Recommend";
 import ShowList from "../../components/ShowList";
+import Catalog from "../../components/Catalog";
 
 class Index extends Component {
     render() {
         return (
             <div>
+                <Catalog/>
                 <Recommend/>
                 <ShowList id={`competition`}>赛事</ShowList>
                 <ShowList id={`live`}>直播</ShowList>

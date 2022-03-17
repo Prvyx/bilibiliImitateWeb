@@ -39,15 +39,14 @@ import Knowledge from "./pages/Section/Knowledge";
 import Information from "./pages/Section/CatalogSection/Information";
 import More from "./pages/Section/CatalogSection/More";
 import Dance from './pages/Section/Dance'
-import Video from "./pages/VideoPage";
 import VideoPage from "./pages/VideoPage";
+import SpacePage from "./pages/SpacePage";
 const { Footer } = Layout;
 
 function App() {
   return (
     <div>
         <TopMenu/>
-        <Catalog/>
         {/*注册路由*/}
         <Switch>
             <Route path={`/anime`} component={Anime}/>
@@ -81,6 +80,8 @@ function App() {
             <Route path={`/foods`} component={Foods}/>
             <Route path={`/video`} component={VideoPage} />
 
+            {/*个人空间*/}
+            <Route path={`/space`} component={SpacePage}/>
             <Route path={`/`} component={Index}/>
             <Redirect to={`/`}/>
         </Switch>
