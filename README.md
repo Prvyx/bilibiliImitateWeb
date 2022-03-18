@@ -20,5 +20,8 @@
   - react-bilibili目录：前端
   - java-bilibili目录：后端
   - database-bilibili目录：数据库
+#### 项目开发流程
+  - 2022.3.4-2022.3.18：前端界面编写（主要是首页、个人中心页）
+  - 2022.3.19-
 #### Contributors
   - Prvyx
