@@ -23,9 +23,7 @@ class MyVideo extends Component {
             })
     }
     render() {
-        console.log(this.state.myVideoData)
         const myVideoData=this.state.myVideoData||[]
-        console.log(myVideoData)
         return (
             <div className={`myVideo`}>
                 <span>我的视频</span>

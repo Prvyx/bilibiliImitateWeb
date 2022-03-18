@@ -1,13 +1,24 @@
 import React, {Component} from 'react';
-import {AndroidOutlined} from "@ant-design/icons";
-import {Tabs} from 'antd'
-const {TabPane}=Tabs
+import { Menu, Switch } from 'antd';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
+const { Meta } = Card;
+const { SubMenu } = Menu;
+
+// submenu keys of first level
+const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
+
 class SpaceActive extends Component {
+
     render() {
         return (
-            <div>
-                Tab 2
-            </div>
+            <Card
+                hoverable
+                style={{ width: 240 }}
+                cover={<img alt="example" src="/static/space/586422828/active/1.jpg" />}
+            >
+                <Meta title="Europe Street beat" description="www.instagram.com" />
+            </Card>
         );
     }
 }

@@ -1,0 +1,13 @@
+.spaceContribute #components-layout-demo-responsive .logo {
+    height: 32px;
+    margin: 16px;
+    /*background: rgba(255, 255, 255, 0.2);*/
+}
+
+.spaceContribute .site-layout-sub-header-background {
+    background: #fff;
+}
+
+.spaceContribute .site-layout-background {
+    background: #fff;
+}
