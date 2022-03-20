@@ -12,10 +12,15 @@ class RecommendContainer extends Component {
     // 自定义函数
     // 获取recommendList数据
     getData=()=>{
-        let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897"
-        axios.get(_url+"/recommendContainer_api")
+        let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/"
+        let _api='recommendContainer_api'
+        axios.post('http://localhost:3000/api/recommendContainer.ajax',{userId:'1'})
             .then(_d=>{
-                this.setState({recommendList:_d.data.recommendList})
+                if(_d.data.status===0){
+                    this.setState({recommendList:_d.data.data})
+                }else{
+                    console.log(_d.data.msg)
+                }
             })
     }
 
@@ -31,17 +36,17 @@ class RecommendContainer extends Component {
                     {
                         (this.state.recommendList||[]).map((recommendObj)=>{
                             return (
-                                <Col key={recommendObj.id} span={7} style={{height: 200,marginLeft: 10,border: "1px solid #ffffff"}}>
+                                <Col key={recommendObj.video_id} span={7} style={{height: 200,marginLeft: 10,border: "1px solid #ffffff"}}>
                                     <Card
                                         hoverable
                                         style={{ width: "100%" ,height:"100%"}}
-                                        cover={<img onClick={()=>{window.open("https://www.bilibili.com/","_blank")}} alt="example" src={recommendObj.imgUrl} style={{borderRadius:8}}/>}
+                                        cover={<img onClick={()=>{window.open("https://www.bilibili.com/","_blank")}} alt="example" src={recommendObj.video_img_path} style={{borderRadius:8}}/>}
                                         size={"small"}
                                     >
                                         <Meta
                                             title={<a href="https://www.bilibili.com/"
-                                                      target={`_blank`}>{recommendObj.title}</a>}
-                                            description={<a href="https://www.bilibili.com/" target={`_blank`}>up:{recommendObj.author} · {recommendObj.date}</a>}
+                                                      target={`_blank`}>{recommendObj.video_title}</a>}
+                                            description={<a href="https://www.bilibili.com/" target={`_blank`}>up:{recommendObj.fk_user_id} · {recommendObj.video_datetime}</a>}
                                         />
                                     </Card>
                                 </Col>

@@ -1,0 +1,9 @@
+com\prvyx\dao\video\VideoMapper.class
+com\prvyx\pojo\Video.class
+com\prvyx\dao\user\UserMapper.class
+com\prvyx\utils\entity\DataResult.class
+com\prvyx\utils\MybatisUtils.class
+com\prvyx\utils\entity\DataResultImpl.class
+com\prvyx\pojo\User.class
+com\prvyx\service\IndexRecommendService.class
+com\prvyx\controller\IndexRecommendController.class

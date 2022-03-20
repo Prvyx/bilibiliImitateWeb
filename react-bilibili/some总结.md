@@ -38,3 +38,9 @@
     但是子组件首先肯定是因为父组件的渲染而进行渲染，这时传递的id参数肯定为undefined，子组件肯定拿不到想要的数据
     
     总结：父组件在获取数据时，直接把子组件需要的数据给获取到，直接使用this.props给子组件传递即可。或者父组件不要获取数据，而是让它的多个子组件各自获取自己的数据，从而防止渲染冲突
+### 2022.3.20
+  - create-react-app配置代理问题
+  - B站资料：https://www.bilibili.com/video/BV1wy4y1D7JT?p=65
+  - 但根据上面资料，还是无法运行
+  - 查找StackOverFlow资料:https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object，使用http-proxy-middleware，成功
+  - 后续查找到github资料:https://github.com/facebook/create-react-app/issues/5103，官方说支持字符串型的package.json文件中的proxy，但本机却不行，报错，官方提供的第二种方法（也就是sof（StackOverFlow）提供的方法），可以
