@@ -20,14 +20,14 @@ class VideoList extends Component {
                 <List
                     dataSource={parts}
                     renderItem={item => (
-                        <List.Item key={item.id}>
+                        <List.Item key={item.selection_id}>
                             <List.Item.Meta
                                 style={{overflow:"hidden",whiteSpace: "nowrap",textOverflow: "ellipsis"}}
                                 // avatar={<Avatar src={item.picture.large} />}
                                 // title={<a href="https://ant.design">{item.name.last}</a>}
-                                description={<Link to={`/video/${id}?p=${item.id}`}>P{item.id} {item.part}</Link>}
+                                description={<Link to={`/video/${id}?p=${item.selection_id}`}>P{item.selection_id} {item.selection_title}</Link>}
                             />
-                            <div>{item.duration}</div>
+                            <div>{item.selection_duration}</div>
                         </List.Item>
                     )}
                 />

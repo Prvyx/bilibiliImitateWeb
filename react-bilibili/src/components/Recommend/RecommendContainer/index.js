@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Col, Row,Card } from "antd";
+import {Col, Row,Card,Empty  } from "antd";
 
 import './index.css'
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -30,32 +31,46 @@ class RecommendContainer extends Component {
     }
 
     render() {
-        return (
-            <Col span={15}>
-                <Row gutter={[10, 20]}>
-                    {
-                        (this.state.recommendList||[]).map((recommendObj)=>{
-                            return (
-                                <Col key={recommendObj.video_id} span={7} style={{height: 200,marginLeft: 10,border: "1px solid #ffffff"}}>
-                                    <Card
-                                        hoverable
-                                        style={{ width: "100%" ,height:"100%"}}
-                                        cover={<img onClick={()=>{window.open("https://www.bilibili.com/","_blank")}} alt="example" src={recommendObj.video_img_path} style={{borderRadius:8}}/>}
-                                        size={"small"}
-                                    >
-                                        <Meta
-                                            title={<a href="https://www.bilibili.com/"
-                                                      target={`_blank`}>{recommendObj.video_title}</a>}
-                                            description={<a href="https://www.bilibili.com/" target={`_blank`}>up:{recommendObj.fk_user_id} · {recommendObj.video_datetime}</a>}
-                                        />
-                                    </Card>
-                                </Col>
-                            )
-                        })
-                    }
-                </Row>
-            </Col>
-        );
+        if(this.state.recommendList===undefined){
+            return (
+                <Col span={15}>
+                    <Empty style={{padding: 120,height: '300px'}} image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                </Col>
+            )
+        }else{
+            return (
+                <Col span={15}>
+                    <Row gutter={[10, 20]}>
+                        {
+                            (this.state.recommendList||[]).map((recommendObj)=>{
+                                return (
+                                    <Col key={recommendObj.video_id} span={7} style={{height: 200,marginLeft: 10,border: "1px solid #ffffff"}}>
+                                        <Card
+                                            hoverable
+                                            style={{ width: "100%" ,height:"100%"}}
+                                            cover={
+                                                <Link to={`/video/${recommendObj.video_id}`} target={'_blank'}>
+                                                    <img
+                                                        alt="example"
+                                                        src={recommendObj.video_img_path}
+                                                        style={{width:'100%',height:'100%',borderRadius:8}}
+                                                    />
+                                                </Link>}
+                                            size={"small"}
+                                        >
+                                            <Meta
+                                                title={<Link to={`/video/${recommendObj.video_id}`} target={'_blank'}>{recommendObj.video_title}</Link>}
+                                                description={<a href="https://www.bilibili.com/" target={`_blank`}>up:{recommendObj.user_name} · {recommendObj.video_datetime}</a>}
+                                            />
+                                        </Card>
+                                    </Col>
+                                )
+                            })
+                        }
+                    </Row>
+                </Col>
+            );
+        }
     }
 }
 

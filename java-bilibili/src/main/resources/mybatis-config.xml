@@ -16,6 +16,9 @@
     </environments>
     <mappers>
         <mapper resource="com/prvyx/dao/user/UserMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/IndexVideoMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/IndexShowListVideoMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/VideoSelectionMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/VideoDetailMapper.xml"/>
     </mappers>
 </configuration>
