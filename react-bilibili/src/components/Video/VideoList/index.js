@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 class VideoList extends Component {
 
     render() {
-        console.log(this.props)
         const {id,parts}=this.props
         return (
             <div

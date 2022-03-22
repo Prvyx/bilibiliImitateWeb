@@ -1,8 +1,8 @@
 import logo from './logo.svg';
-import React from "react";
+import React,{ useState } from "react";
 import './App.less';
 import 'antd/dist/antd.less';
-import { Layout } from 'antd';
+import { Layout ,Affix,Button} from 'antd';
 import {Redirect, Route, Switch} from "react-router-dom";
 
 // 自定义一般组件
@@ -43,10 +43,14 @@ import VideoPage from "./pages/VideoPage";
 import SpacePage from "./pages/SpacePage";
 const { Footer } = Layout;
 
+
 function App() {
+  const [top, setTop] = useState(10);
+  const [bottom, setBottom] = useState(10);
   return (
     <div>
         <TopMenu/>
+
         {/*注册路由*/}
         <Switch>
             <Route path={`/anime`} component={Anime}/>

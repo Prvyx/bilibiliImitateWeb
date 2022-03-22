@@ -22,7 +22,6 @@ class SpaceList extends Component {
     }
     render() {
         const spaceListData=this.state.spaceListData||[]
-        console.log(spaceListData)
         return (
             <div className={`mySpaceList`}>
                 <div>

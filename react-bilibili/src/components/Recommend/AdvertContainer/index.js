@@ -32,7 +32,7 @@ class AdvertContainer extends Component {
         // console.log(JSON.parse(JSON.stringify(mainColors)))
         // console.log("advertList")
         // 下面这行没数据，因为_d.data.advertList的定义和await无关
-        console.log(JSON.parse(JSON.stringify(_d.data.advertList)))
+        // console.log(JSON.parse(JSON.stringify(_d.data.advertList)))
         _d.data.advertList.map((advertObj,index)=>{
             advertObj.mainColor=mainColors[index]
             return advertObj
@@ -55,7 +55,7 @@ class AdvertContainer extends Component {
                 <Carousel autoplay>
                     {
                         (this.state.advertList||[]).map((advertObj)=>{
-                            console.log('map2:',JSON.stringify(advertObj.mainColor))
+                            // console.log('map2:',JSON.stringify(advertObj.mainColor))
                             return (
                                 <div key={advertObj.title}>
                                     <h3 onClick={()=>{window.open(`${advertObj.toUrl}`,"_blank")}} className={`contentStyle`} style={{backgroundColor: `${advertObj.mainColor}`,backgroundImage: `url(${advertObj.imgUrl})`}}>{advertObj.title}</h3>

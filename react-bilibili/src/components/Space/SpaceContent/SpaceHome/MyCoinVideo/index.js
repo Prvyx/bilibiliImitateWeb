@@ -41,7 +41,6 @@ class MyCoinVideo extends Component {
         let _api='myCoinVideo_api'
         axios.get(_url+_api)
             .then(_d=>{
-                console.log(_d.data)
                 this.setState({myCoinVideoData:_d.data.myCoinVideoData})
             })
     }

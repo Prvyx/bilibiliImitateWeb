@@ -19,15 +19,15 @@ import Upload from '../../pages/Section/Upload'
 
 
 import './index.css'
+import UserAvatar from "./UserAvatar";
 const { Search } = Input;
-const onSearch = value => console.log(value);
+const onSearch = value => {};
 class TopMenu extends Component {
     state = {
         current: 'mail',
     };
 
     handleClick = e => {
-        console.log('click ', e);
         this.setState({ current: e.key });
     };
 
@@ -61,7 +61,9 @@ class TopMenu extends Component {
                         <li className={`top-menu-input`}>
                             <Search placeholder="input search text" onSearch={onSearch} enterButton />
                         </li>
-                        <Avatar className={`avatar`} src={<Image src="https://joeschmoe.io/api/v1/random" style={{ width: 32}} />} />
+                        <Menu.Item key="user" style={{marginLeft: 30}}>
+                            <UserAvatar/>
+                        </Menu.Item>
                         <Menu.Item key="vip">
                             <NavLink to={`/vip`} target={`_blank`}>大会员</NavLink>
                         </Menu.Item>

@@ -16,7 +16,6 @@ class MyVideo extends Component {
         let _api='spaceHome_api'
         axios.get(_url+_api)
             .then(_d=>{
-                console.log(_d.data.myVideoData)
                 this.setState({myVideoData:_d.data.myVideoData},()=>{
                     // this.render()
                 })

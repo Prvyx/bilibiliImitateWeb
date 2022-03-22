@@ -27,7 +27,6 @@ class ShowList extends Component {
 
                 // 向后台要数据
                 const listKey=id+'List'
-                console.log(_d.data)
                 if(_d.data.status===0){
                     this.setState({[listKey]:_d.data.data})
                 }

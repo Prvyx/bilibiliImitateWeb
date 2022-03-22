@@ -21,7 +21,6 @@ class Video extends Component {
 
     analyzeLocation(location) {
         const id = location.pathname.slice(7)
-        console.log(id)
         this.setState({id: id},()=>{
             this.getVideoData()
         })
@@ -34,7 +33,6 @@ class Video extends Component {
 
         // 向后台要数据
         let _url='http://localhost:3000/api/videoDetail.ajax'
-        console.log(this.state.id)
         axios.post(_url,{videoId:this.state.id})
             .then(_d=>{
                 this.setState({videoData:_d.data.data},()=>{
@@ -60,7 +58,7 @@ class Video extends Component {
             <div>
                 <Layout style={{margin: '0 100px',width: 1060}}>
                     <Content style={{backgroundColor: "#ffffff"}}>
-                        <Descriptions column={16} style={{backgroundColor: ""}} size={`small`} title="尚硅谷React技术全家桶全套完整版（零基础入门到精通/男神天禹老师亲授）">
+                        <Descriptions column={16} style={{backgroundColor: ""}} size={`small`} title={`${videoData.video_title}`}>
                             <Descriptions.Item span={3} label="播放量">{videoData.video_play_count}</Descriptions.Item>
                             <Descriptions.Item span={3} label="弹幕量">{videoData.video_barrage_count}</Descriptions.Item>
                             <Descriptions.Item span={4} label="日期">{videoData.video_datetime}</Descriptions.Item>

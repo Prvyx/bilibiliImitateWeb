@@ -9,15 +9,16 @@ class PlayerBlock extends Component {
         if(params===''){
             params='p=1'
         }
-        console.log(params)
         const p=qs.parse(params).p
+
+        const {pathname}=this.props.location
+
         // const search=this.props.search.slice(1)
         // const p=search!==''?qs.parse(search).p:'1'
         // const {search}=this.props.location||null
         // console.log(search)
         // const {p}=qs.parse(search.slice(1))
-        let url=`/static/video/BV1wy4y1D7JT/${p}.mp4`
-        console.log(url)
+        let url=`/static/video/${pathname.slice(7)}/${p}.mp4`
         // console.log('url:',url)
         // console.log(qs.parse(this.props.location.search))
         return (
