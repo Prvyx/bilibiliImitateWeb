@@ -20,5 +20,6 @@
         <mapper resource="com/prvyx/dao/video/IndexShowListVideoMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/VideoSelectionMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/VideoDetailMapper.xml"/>
+        <mapper resource="com/prvyx/dao/user/CommonLoginMapper.xml"/>
     </mappers>
 </configuration>

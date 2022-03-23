@@ -1,9 +1,12 @@
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\service\VideoDetailS.java
+C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\controller\CommonLoginC.java
+C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\dao\user\CommonLoginMapper.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\dao\video\VideoDetailMapper.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\pojo\User.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\controller\IndexShowListController.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\dao\user\UserMapper.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\pojo\VideoSelection.java
+C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\pojo\LoginStatus.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\service\IndexRecommendService.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\service\IndexShowListService.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\dao\video\VideoSelectionMapper.java
@@ -14,6 +17,7 @@ C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\pojo\VideoDe
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\utils\MybatisUtils.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\controller\VideoDetailC.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\dao\video\IndexVideoMapper.java
+C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\service\CommonLoginS.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\pojo\IndexVideo.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\dao\video\IndexShowListVideoMapper.java
 C:\Users\呵\Desktop\bilibili\java-bilibili\src\main\java\com\prvyx\utils\entity\DataResult.java

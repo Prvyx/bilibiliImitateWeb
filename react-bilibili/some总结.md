@@ -45,3 +45,7 @@
   - 查找StackOverFlow资料:https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object，使用http-proxy-middleware，成功
   - 后续查找到github资料:https://github.com/facebook/create-react-app/issues/5103，官方说支持字符串型的package.json文件中的proxy，但本机却不行，报错，官方提供的第二种方法（也就是sof（StackOverFlow）提供的方法），可以
   - 至此，前后端数据first交互完成
+### 2022.3.23
+  - 需求：根据cookie中是否有video_id的value来判断，若video_id为undefined，则导航栏的登录状态展现为“登录”；否则，展现为“用户头像”
+  - 查找资料：https://juejin.cn/post/6844903497658269703
+  - 学习到：jsx的语法，在回调函数里面写if-else代码，并在回调函数后面带上()，直接调用回调函数
