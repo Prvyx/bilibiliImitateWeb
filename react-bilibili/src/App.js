@@ -85,7 +85,7 @@ function App() {
             <Route path={`/video`} component={VideoPage} />
 
             {/*个人空间*/}
-            <Route path={`/space`} component={SpacePage}/>
+            <Route path={`/space/:user_id`} component={SpacePage}/>
             <Route path={`/`} component={Index}/>
             <Redirect to={`/`}/>
         </Switch>

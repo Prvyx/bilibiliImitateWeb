@@ -49,3 +49,10 @@
   - 需求：根据cookie中是否有video_id的value来判断，若video_id为undefined，则导航栏的登录状态展现为“登录”；否则，展现为“用户头像”
   - 查找资料：https://juejin.cn/post/6844903497658269703
   - 学习到：jsx的语法，在回调函数里面写if-else代码，并在回调函数后面带上()，直接调用回调函数
+### 2022.3.23
+  - 需求：使用React Hook来适配antd的样例代码
+  - 资料：https://zh-hans.reactjs.org/docs/hooks-state.html
+### 2022.3.23
+  - 需求：UserAvatar函数组件中：密码登录界面，点击注册，跳转到短信登录界面，并弹出提示
+  - 资料：https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
+  - 未实现，需要学习ref，按照官网资料的没成功

@@ -51,6 +51,9 @@ const UserAvatar = () => {
             }
         })
     }
+    // 密码登录界面，点击注册，跳转到短信登录界面，并弹出提示
+    // 未实现
+
 
     return (
         <>
@@ -106,7 +109,11 @@ const UserAvatar = () => {
                                                             />
                                                         </Space>
                                                         <div style={{margin:'10px 41px'}}>
-                                                            <Button style={{margin: '0 8px',width:'45%'}} type="primary">注册</Button>
+                                                            <Button style={{margin: '0 8px',width:'45%'}}
+                                                                    type="primary"
+                                                            >
+                                                                注册
+                                                            </Button>
                                                             <Button
                                                                 style={{margin: '0 8px',width:'45%'}} type="primary"
                                                                 onClick={commonLogin}
@@ -153,7 +160,7 @@ const UserAvatar = () => {
                                     <Footer style={{padding:0,backgroundColor:'#ffffff'}}>
                                         <Row style={{position:'relative',height: 90}} gutter="0" justify="center">
                                             <Col span={6} style={{position:'absolute',bottom:-24,left:-24,width:120,height:114,background:'url(/static/22.png) no-repeat #ffffff center',backgroundSize:'100% 100%'}}/>
-                                            <Col span={12}>
+                                            <Col span={12} style={{paddingTop: 30}}>
                                                 <span>未注册过哔哩哔哩的手机号，我们将自动帮你注册账号</span>
                                                 <br/>
                                                 <span>登录或完成注册即代表你同意 用户协议 和 隐私政策</span>
@@ -166,7 +173,16 @@ const UserAvatar = () => {
                         )
                     }else {
                         return (
-                            <Avatar className={`avatar`} src={<Image src="https://joeschmoe.io/api/v1/random" style={{ width: 32}} />} />
+                            <Avatar className={`avatar`}
+                                    src={
+                                        <Link to={`/space/${cookie.load('user_id')}`} target={`_blank`}>
+                                            <img alt={`example`}
+                                                 src={`/static/space/${cookie.load('user_id')}/avatar.png`}
+                                                 width='38px'>
+                                            </img>
+                                        </Link>
+                                    }
+                            />
                         )
                     }
                 })()
