@@ -20,7 +20,7 @@ public class VideoDetailC {
     @ResponseBody
     public String getVideoSelectionList(@RequestBody Map<String,String> dataMap){
         String videoId= dataMap.get("videoId");
-        System.out.println(videoId);
+//        System.out.println(videoId);
         DataResult dataResult=new DataResultImpl();
         VideoDetail videoDetail=new VideoDetailS().getVideoDetail(videoId);
         if(videoDetail.getVideo_id().length()==0){
@@ -33,7 +33,7 @@ public class VideoDetailC {
             dataResult.setData(videoDetail);
         }
 
-        System.out.println(videoDetail);
+//        System.out.println(videoDetail);
         try {
             return new ObjectMapper().writeValueAsString(dataResult);
         } catch (JsonProcessingException e) {

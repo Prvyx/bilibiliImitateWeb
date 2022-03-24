@@ -2,9 +2,10 @@ package com.prvyx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.prvyx.pojo.LoginStatus;
-import com.prvyx.service.CommonLoginS;
+import com.prvyx.pojo.IndexVideo;
+import com.prvyx.pojo.VideoListByStarDirId;
+import com.prvyx.service.IndexRecommendService;
+import com.prvyx.service.VideoListByStarDirIdS;
 import com.prvyx.utils.entity.DataResult;
 import com.prvyx.utils.entity.DataResultImpl;
 import org.springframework.stereotype.Controller;
@@ -17,24 +18,22 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class CommonLoginC {
-    @RequestMapping(value = "/api/commonLogin.ajax",method = RequestMethod.POST)
+public class VideoListByStarDirIdC {
+    @RequestMapping(value = "/api/videoListByStarDirId.ajax",method = RequestMethod.POST)
     @ResponseBody
-    public String getCommonLoginUserId(@RequestBody Map<String,String> dataMap){
-        String userName= dataMap.get("userName");
-        String userPwd=dataMap.get("userPwd");
+    public String getIndexRecommendVideoList(@RequestBody Map<String,String> dataMap){
+        String userId= dataMap.get("userId");
+        String starDirId=dataMap.get("starDirId");
+//        System.out.println(userId);
+//        System.out.println(starDirId);
         DataResult dataResult=new DataResultImpl();
-        LoginStatus loginStatus=new CommonLoginS().getCommonLoginUserId(userName,userPwd);
-        if(!loginStatus.isLogin_status()){
-            dataResult.setStatus(-1);
-            dataResult.setMsg("fail");
-            dataResult.setData(null);
-        }else {
-            dataResult.setStatus(0);
-            dataResult.setMsg("success");
-            dataResult.setData(loginStatus);
-        }
+        List<VideoListByStarDirId> videoList=new VideoListByStarDirIdS().getVideoListByStarDirId(userId,starDirId);
 
+        dataResult.setStatus(0);
+        dataResult.setMsg("success");
+        dataResult.setData(videoList);
+
+//        System.out.println(videoList);
         try {
             return new ObjectMapper().writeValueAsString(dataResult);
         } catch (JsonProcessingException e) {

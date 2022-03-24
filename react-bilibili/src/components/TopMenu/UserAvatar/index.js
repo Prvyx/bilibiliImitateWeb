@@ -44,7 +44,8 @@ const UserAvatar = () => {
             userPwd:commonLoginUserPwd
         }).then(_d=>{
             if(_d.data.status===0){
-                cookie.save('user_id',_d.data.data.user_id)
+                let cookieTime = new Date(new Date().getTime + 24 * 3600 * 1000);
+                cookie.save('user_id',_d.data.data.user_id,{expires:cookieTime})
                 handleOk()
             }else{
                 alert('登录失败')

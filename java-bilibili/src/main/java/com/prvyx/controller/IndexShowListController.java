@@ -21,7 +21,7 @@ public class IndexShowListController {
     @ResponseBody
     public String getIndexShowList(@RequestBody Map<String,String> dataMap){
         String categoryId= dataMap.get("categoryId");
-        System.out.println(categoryId);
+//        System.out.println(categoryId);
         DataResult dataResult=new DataResultImpl();
         List<IndexVideo> videoList=new IndexShowListService().getIndexShowList(categoryId);
         if(videoList.isEmpty()){

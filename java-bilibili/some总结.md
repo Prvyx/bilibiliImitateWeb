@@ -8,3 +8,8 @@
 ### 2022.3.23
 - Mybatis中的mapper接口中的方法，需要传递多个参数时，可以使用Mybatis包中的注解：@Param("")来解决
 - 查找资料：https://www.w3cschool.cn/mybatis/mybatis-xwbe3bs2.html
+### 2022.3.24
+- application/json、multipart/form-data、application/x-www-form-urlencoded 请求正文的MIME类型
+  - application/json：传递的参数为JSON数据
+  - multipart/form-data：传递的参数为文件
+  - application/x-www-form-urlencoded：传递的参数变为urlencoded的形式，eg：{userId:'1',userPwd:'2'} ==>(POST) 请求体中：userId='1'&userPwd='2' 

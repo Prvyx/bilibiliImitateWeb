@@ -1,15 +1,18 @@
 com\prvyx\dao\video\IndexVideoMapper.class
 com\prvyx\service\CommonLoginS.class
 com\prvyx\dao\user\UserMapper.class
+com\prvyx\dao\video\VideoListByStarDirIdMapper.class
 com\prvyx\controller\CommonLoginC.class
 com\prvyx\dao\user\CommonLoginMapper.class
 com\prvyx\dao\video\VideoSelectionMapper.class
+com\prvyx\pojo\VideoListByStarDirId.class
 com\prvyx\dao\video\IndexShowListVideoMapper.class
 com\prvyx\pojo\IndexVideo.class
 com\prvyx\service\IndexRecommendService.class
 com\prvyx\service\VideoDetailS.class
 com\prvyx\controller\IndexRecommendController.class
 com\prvyx\pojo\VideoDetail.class
+com\prvyx\service\VideoListByStarDirIdS.class
 com\prvyx\pojo\Video.class
 com\prvyx\pojo\VideoSelection.class
 com\prvyx\controller\VideoDetailC.class
@@ -19,5 +22,6 @@ com\prvyx\utils\MybatisUtils.class
 com\prvyx\pojo\LoginStatus.class
 com\prvyx\utils\entity\DataResultImpl.class
 com\prvyx\dao\video\VideoDetailMapper.class
+com\prvyx\controller\VideoListByStarDirIdC.class
 com\prvyx\controller\IndexShowListController.class
 com\prvyx\pojo\User.class

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Card, List} from "antd";
-
+import cookie from 'react-cookies'
+import axios from "axios";
 const data2 = [
     {
         title: 'Title 1',
@@ -29,6 +30,7 @@ const data2 = [
 ];
 
 class MyStar extends Component {
+
     render() {
         return (
             <div>

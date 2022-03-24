@@ -21,5 +21,7 @@
         <mapper resource="com/prvyx/dao/video/VideoSelectionMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/VideoDetailMapper.xml"/>
         <mapper resource="com/prvyx/dao/user/CommonLoginMapper.xml"/>
+        <mapper resource="com/prvyx/dao/user/StarDirRetrieveMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/VideoListByStarDirIdMapper.xml"/>
     </mappers>
 </configuration>
