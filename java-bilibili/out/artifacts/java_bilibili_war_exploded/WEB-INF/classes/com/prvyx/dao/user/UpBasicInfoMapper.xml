@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.dao.user.UpBasicInfoMapper">
+    <select id="getUpBasicInfo" resultType="com.prvyx.pojo.UpBasicInfo">
+        select user_id,user_name,user_avatar_path, is_man, grade, is_vip, play_count, thumb_up_number, fan_number, follower_number, announce_content, signature_content
+        from user
+        where user_id=#{userId}
+    </select>
+</mapper>

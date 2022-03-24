@@ -23,5 +23,6 @@
         <mapper resource="com/prvyx/dao/user/CommonLoginMapper.xml"/>
         <mapper resource="com/prvyx/dao/user/StarDirRetrieveMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/VideoListByStarDirIdMapper.xml"/>
+        <mapper resource="com/prvyx/dao/user/UpBasicInfoMapper.xml"/>
     </mappers>
 </configuration>

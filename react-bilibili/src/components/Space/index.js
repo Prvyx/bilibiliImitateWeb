@@ -3,8 +3,42 @@ import {Form, Layout} from "antd";
 import SpaceHeader from "./SpaceHeader";
 import SpaceContent from "./SpaceContent";
 import SpaceSider from "./SpaceSider";
+import cookie from 'react-cookies'
+import axios from "axios";
 
 class Space extends Component {
+    state={}
+
+    getUpBasicInfo=()=>{
+        let _url='http://localhost:3000/api/UpBasicInfo.ajax'
+        axios.post(_url,{userId:this.props.userId})
+            .then(_d=>{
+                if(_d.data.status===0){
+                    const userBasicInfo=_d.data.data
+                    const spaceHeaderProps={
+                        userName:userBasicInfo.user_name,
+                        grade:userBasicInfo.grade,
+                        avatarImgPath:userBasicInfo.user_avatar_path,
+                        signatureContent:userBasicInfo.signature_content,
+                    }
+                    const spaceSiderProps={
+                        userId:userBasicInfo.user_id,
+                        followerNumber:userBasicInfo.follower_number,
+                        fanNumber:userBasicInfo.fan_number,
+                        thumbUpNumber:userBasicInfo.thumb_up_number,
+                        playCount:userBasicInfo.play_count,
+                        announceContent:userBasicInfo.announce_content,
+                    }
+                    this.setState({spaceHeaderProps:spaceHeaderProps,spaceSiderProps:spaceSiderProps})
+                }else {
+                    console.log('up信息加载失败')
+                }
+            })
+    }
+    componentDidMount() {
+        this.getUpBasicInfo()
+    }
+
     render() {
         return (
             <Form
@@ -19,10 +53,10 @@ class Space extends Component {
             >
                 <div style={{margin: '0 80px',backgroundColor:'green'}}>
                     <Layout>
-                        <SpaceHeader/>
+                        <SpaceHeader spaceHeaderProps={this.state.spaceHeaderProps}/>
                         <Layout>
                             <SpaceContent/>
-                            <SpaceSider/>
+                            <SpaceSider spaceSiderProps={this.state.spaceSiderProps}/>
                         </Layout>
                     </Layout>
                 </div>
