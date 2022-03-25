@@ -15,7 +15,7 @@ import Dynamic from '../../pages/Section/Dynamic'
 import Favorite from '../../pages/Section/Favorite'
 import History from '../../pages/Section/History'
 import Writing_center from '../../pages/Section/Writing_center'
-import Upload from '../../pages/Section/Upload'
+import Upload from '../../pages/Section/UploadPage'
 
 
 import './index.css'

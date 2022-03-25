@@ -44,7 +44,7 @@ const UserAvatar = () => {
             userPwd:commonLoginUserPwd
         }).then(_d=>{
             if(_d.data.status===0){
-                let cookieTime = new Date(new Date().getTime + 24 * 3600 * 1000);
+                let cookieTime = new Date(new Date().getTime + 24 * 3600);
                 cookie.save('user_id',_d.data.data.user_id,{expires:cookieTime})
                 handleOk()
             }else{

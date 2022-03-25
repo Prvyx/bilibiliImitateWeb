@@ -3,7 +3,6 @@ import {Form, Layout} from "antd";
 import SpaceHeader from "./SpaceHeader";
 import SpaceContent from "./SpaceContent";
 import SpaceSider from "./SpaceSider";
-import cookie from 'react-cookies'
 import axios from "axios";
 
 class Space extends Component {
@@ -21,6 +20,9 @@ class Space extends Component {
                         avatarImgPath:userBasicInfo.user_avatar_path,
                         signatureContent:userBasicInfo.signature_content,
                     }
+                    const spaceContentProps={
+                        userId:userBasicInfo.user_id
+                    }
                     const spaceSiderProps={
                         userId:userBasicInfo.user_id,
                         followerNumber:userBasicInfo.follower_number,
@@ -29,7 +31,7 @@ class Space extends Component {
                         playCount:userBasicInfo.play_count,
                         announceContent:userBasicInfo.announce_content,
                     }
-                    this.setState({spaceHeaderProps:spaceHeaderProps,spaceSiderProps:spaceSiderProps})
+                    this.setState({spaceHeaderProps:spaceHeaderProps,spaceContentProps:spaceContentProps,spaceSiderProps:spaceSiderProps})
                 }else {
                     console.log('up信息加载失败')
                 }
@@ -55,7 +57,7 @@ class Space extends Component {
                     <Layout>
                         <SpaceHeader spaceHeaderProps={this.state.spaceHeaderProps}/>
                         <Layout>
-                            <SpaceContent/>
+                            <SpaceContent userId={this.props.userId}/>
                             <SpaceSider spaceSiderProps={this.state.spaceSiderProps}/>
                         </Layout>
                     </Layout>

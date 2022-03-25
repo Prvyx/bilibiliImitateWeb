@@ -26,6 +26,7 @@ class SpaceHome extends Component {
         console.log('Received values of form: ', values);
     };
     render() {
+        console.log(this.props)
         return (
             <div>
                 <Tabs defaultActiveKey="1">
@@ -55,13 +56,13 @@ class SpaceHome extends Component {
                     </TabPane>
                 </Tabs>
                 <Divider/>
-                <MyVideo/>
+                <MyVideo userId={this.props.userId}/>
                 <Divider/>
                 <MyColumn/>
                 <Divider/>
                 <MyList/>
                 <Divider/>
-                <MyStar/>
+                <MyStar userId={this.props.userId}/>
                 <Divider/>
                 <MyCoinVideo/>
                 <Divider/>

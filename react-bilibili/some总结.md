@@ -56,3 +56,12 @@
   - 需求：UserAvatar函数组件中：密码登录界面，点击注册，跳转到短信登录界面，并弹出提示
   - 资料：https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
   - 未实现，需要学习ref，按照官网资料的没成功
+### 2022.3.25
+  - bug场景：根据user_id异步获得data1（data1其实就是把user_id进行了封装，你没看错，就是user_id）（axios），然后把data1通过this.props传递给子组件1
+  - 解决方式：不使用在axios的then中data1，直接把user_id传递给子组件1
+  - 总结：切记！！！！！：不要给子组件传递异步生成的变量（即axios.xxx.then中的任何变量}）
+  - eg：我在axios的then中产生var1变量/数据，然后我把这个变量/数据用this.setState存放在this.state中，这时候不要this.state.var1传递给子组件了
+  - 
+  - react代码写到现在，总结了一套方法：通过路由组件获得id，该id传给父组件，不要以任何方式在父组件中获取数据（除非你确保在父组件获取的数据不会传递给子组件，而是父组件自己用！！），
+    然后把id通过this.props从父组件传递给子组件，让子组件根据id进行操作，操作情况和父组件一样（根据id获取的异步数据不能传递给子子组件；否则，传递id给子子组件，让其自行操作）
+  - 有一点可以明确：父组件获取的异步数据不能通过this.props传递给子组件！！！

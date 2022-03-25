@@ -13,13 +13,15 @@ const {Content}=Layout
 const {TabPane} = Tabs
 class SpaceContent extends Component {
     render() {
+        const userId=this.props.userId
+        console.log(userId)
         return (
             <Content>
                 <Tabs defaultActiveKey="1" style={{marginLeft: 15}}>
                     <TabPane tab={
                         <span><AppleOutlined />主页</span>
                     } key="1">
-                        <SpaceHome/>
+                        <SpaceHome userId={userId}/>
                     </TabPane>
                     <TabPane tab={
                         <span><AndroidOutlined />动态</span>

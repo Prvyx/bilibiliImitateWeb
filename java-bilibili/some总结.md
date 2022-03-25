@@ -12,4 +12,8 @@
 - application/json、multipart/form-data、application/x-www-form-urlencoded 请求正文的MIME类型
   - application/json：传递的参数为JSON数据
   - multipart/form-data：传递的参数为文件
-  - application/x-www-form-urlencoded：传递的参数变为urlencoded的形式，eg：{userId:'1',userPwd:'2'} ==>(POST) 请求体中：userId='1'&userPwd='2' 
+  - application/x-www-form-urlencoded：传递的参数变为urlencoded的形式，eg：{userId:'1',userPwd:'2'} ==>(POST) 请求体中：userId='1'&userPwd='2'
+### 2022.3.25
+  - 需求：idea的“类和方法的注释模板”
+  - 完成状态：完成
+  - 资料：https://zhuanlan.zhihu.com/p/386392249
