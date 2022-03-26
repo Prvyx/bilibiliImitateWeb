@@ -23,7 +23,7 @@ import Dynamic from "./pages/Section/Dynamic";
 import Favorite from "./pages/Section/Favorite";
 import History from "./pages/Section/History";
 import Writing_center from "./pages/Section/Writing_center";
-import UploadPage from "./pages/Section/UploadPage"
+import UploadPage from "./pages/Section/MemberPage"
 import Guochuang from "./pages/Section/CatalogSection/Guochuang";
 import Variety from "./pages/Section/CatalogSection/Variety";
 import Documentary from "./pages/Section/CatalogSection/Documentary";
@@ -65,7 +65,7 @@ function App() {
             <Route path={`/favorite`} component={Favorite}/>
             <Route path={`/history`} component={History}/>
             <Route path={`/writing_center`} component={Writing_center}/>
-            <Route path={`/upload`} component={UploadPage}/>
+            <Route path={`/member`} component={UploadPage}/>
 
             <Route path={`/guochuang`} component={Guochuang}/>
             <Route path={`/variety`} component={Variety}/>

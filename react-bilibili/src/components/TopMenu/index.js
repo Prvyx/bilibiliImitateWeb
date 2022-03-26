@@ -15,7 +15,7 @@ import Dynamic from '../../pages/Section/Dynamic'
 import Favorite from '../../pages/Section/Favorite'
 import History from '../../pages/Section/History'
 import Writing_center from '../../pages/Section/Writing_center'
-import Upload from '../../pages/Section/UploadPage'
+import Upload from '../../pages/Section/MemberPage'
 
 
 import './index.css'
@@ -83,7 +83,7 @@ class TopMenu extends Component {
                             <NavLink to={`/writing_center`} target={`_blank`}>创作中心</NavLink>
                         </Menu.Item>
                         <Menu.Item key="upload">
-                            <NavLink to={`/upload`} target={`_blank`}>投稿</NavLink>
+                            <NavLink to={`/member`} target={`_blank`}>投稿</NavLink>
                         </Menu.Item>
                     </Space>
                 </Menu>
