@@ -65,3 +65,11 @@
   - react代码写到现在，总结了一套方法：通过路由组件获得id，该id传给父组件，不要以任何方式在父组件中获取数据（除非你确保在父组件获取的数据不会传递给子组件，而是父组件自己用！！），
     然后把id通过this.props从父组件传递给子组件，让子组件根据id进行操作，操作情况和父组件一样（根据id获取的异步数据不能传递给子子组件；否则，传递id给子子组件，让其自行操作）
   - 有一点可以明确：父组件获取的异步数据不能通过this.props传递给子组件！！！
+### 2022.3.29
+  - 需求：react中获取用户上传视频文件的某一帧的图片
+  - 资料：https://juejin.cn/post/6844904115445694477
+### 2022.4.1
+  - 需求：上传一个视频文件、一个标题字符串、一个介绍字符串到后台
+  - 问题：（问题开始出现在react-bilibili/src/components/TopMenu/Member/Upload_c/VideoContribute/index.js文件）react使用antd的Form组件，发现并没有上传的action（而antd的Upload组件就有action）
+  - 解决方法：Form组件其实并不负责与后台交互（写到这，我突然想起了react的初衷==>前端界面框架，并不负责与后台交互）。Upload是个例外。Form表单组件负责”收集数据“，使用onFinish回调。
+然后你把其中需要的数据进行校验后给FormData（最好使用FormData，不使用的话请求报文默认是三大格式的json格式；且就算自己设置axios请求的headers为multipart/form-data，也会出现没有post正文边界的问题），使用axios把FormData传给后端即可

@@ -1,7 +1,9 @@
 package com.prvyx.service.contribute;
 
 import com.prvyx.dao.video.InsertVideoMapper;
+import com.prvyx.service.CheckVidS;
 import com.prvyx.utils.MybatisUtils;
+import com.prvyx.utils.UUIDUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,13 +20,17 @@ import java.util.Date;
  */
 
 public class VideoS {
-    public Boolean getVideoContribute(MultipartFile videoFile){
+    public Boolean getVideoContribute(MultipartFile videoFile,MultipartFile imgFile,String title,String introduce){
         try(SqlSession sqlSession= MybatisUtils.getSqlSession()){
-            String videoId="test1";
+            String videoId;
+            CheckVidS checkVidS=new CheckVidS();
+            do{
+                videoId= UUIDUtils.getRandomVidByUUID(12);
+            }while (!checkVidS.checkVid(videoId));
             String videoTitle= videoFile.getOriginalFilename().substring(0,
                     videoFile.getOriginalFilename().lastIndexOf("."));
 
-            String introduce="introduce_test";
+//            String videoImgPath="/static/video/"+videoId+"/img.png";
             String videoImgPath="/static/video/"+videoId+"/img.png";
             String videoPath="/static/video/"+videoId+"/1.mp4";
             Boolean isForwardAllowed=false;
@@ -55,6 +61,21 @@ public class VideoS {
                 try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))){
                     //MultipartFile自带的获得byte[]的方法，不需要自定义InputStream了
                     byte[] bytes = videoFile.getBytes();
+                    int len = bytes.length;
+
+                    bos.write(bytes, 0, len);
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+                //将首页图片存放至指定位置
+                file=new File("C:\\Users\\呵\\Desktop\\bilibili\\react-bilibili\\public\\static\\video\\"+videoId);
+                file=new File(file.getAbsoluteFile()+File.separator+"img.png");
+
+                try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))){
+                    //MultipartFile自带的获得byte[]的方法，不需要自定义InputStream了
+                    byte[] bytes = imgFile.getBytes();
                     int len = bytes.length;
 
                     bos.write(bytes, 0, len);

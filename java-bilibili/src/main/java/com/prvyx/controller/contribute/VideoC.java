@@ -27,11 +27,17 @@ import java.io.FileOutputStream;
 public class VideoC {
     @RequestMapping(value = "/api/getVideoContribute.ajax",method = RequestMethod.POST)
     @ResponseBody
-    public String getVideoContribute(@RequestParam("video") MultipartFile videoFile)throws Exception{
+    public String getVideoContribute(@RequestParam("videoContribute") MultipartFile videoFile,
+                                     @RequestParam("firstImg") MultipartFile imgFile,
+                                     @RequestParam("title") String title,
+                                     @RequestParam("introduce") String introduce
+    )throws Exception{
 //        System.out.println(videoFile.getOriginalFilename());
-
+        System.out.println(imgFile);
+//        System.out.println(title);
+//        System.out.println(introduce);
         DataResult dataResult=new DataResultImpl();
-        if(new VideoS().getVideoContribute(videoFile)){
+        if(new VideoS().getVideoContribute(videoFile,imgFile,title,introduce)){
             dataResult.setStatus(0);
             dataResult.setMsg("video insert success");
             dataResult.setData(null);

@@ -27,5 +27,6 @@
         <mapper resource="com/prvyx/dao/video/Video4ByUserIdMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/Video8BySpaceStarMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/InsertVideoMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/CheckVidMapper.xml"/>
     </mappers>
 </configuration>
