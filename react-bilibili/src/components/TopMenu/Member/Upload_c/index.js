@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Form, Tabs, Upload, message, Input, Space} from "antd";
+
 import {InboxOutlined,UploadOutlined} from "@ant-design/icons";
 import VideoUploadFrame from "./VideoUploadFrame";
 import VideoContribute from "./VideoContribute";
@@ -79,7 +80,7 @@ class Upload_c extends Component {
                     </Form.Item>
                 </TabPane>
             </Tabs>
-        );
+        )
     }
 }
 

@@ -12,6 +12,7 @@ import UpInfo from "./UpInfo";
 import VideoList from "./VideoList";
 import PlayerBlock from "./PlayerBlock";
 import {Route, Switch} from "react-router-dom";
+import cookie from 'react-cookies'
 import qs from "querystring"
 import axios from "axios";
 const {Content,Sider} = Layout
@@ -33,8 +34,9 @@ class Video extends Component {
 
         // 向后台要数据
         let _url='http://localhost:3000/api/videoDetail.ajax'
-        axios.post(_url,{videoId:this.state.id})
+        axios.post(_url,{videoId:this.state.id,watchUserId:cookie.load('user_id')})
             .then(_d=>{
+                console.log(_d.data)
                 this.setState({videoData:_d.data.data},()=>{
                     this.render()
                 })
@@ -44,7 +46,10 @@ class Video extends Component {
         const {location}=this.props
         this.analyzeLocation(location)
     }
-
+    // 提供给ToolbarReport子组件的回调
+    callback1=()=>{
+        this.getVideoData()
+    }
 
     render() {
         const videoData=this.state.videoData||Object //||Object神来之笔,此处不能null
@@ -52,7 +57,10 @@ class Video extends Component {
             thumbUpCount:videoData.video_thumb_up_number,
             coinCount:videoData.video_coin_number,
             starCount:videoData.video_star_number,
-            forwardCount:videoData.video_forward_number
+            forwardCount:videoData.video_forward_number,
+            thumbUp:videoData.thumbUp,
+            isCoin:videoData.coin,
+            video_id:videoData.video_id
         }
         return (
             <div>
@@ -68,7 +76,7 @@ class Video extends Component {
                             <Route path={`/video/${videoData.video_id}`} component={PlayerBlock}/>
                         </Switch>
                         <SendBar/>
-                        <ToolbarReport {...sanlian}/>
+                        <ToolbarReport {...sanlian} callback1={this.callback1}/>
                     </Content>
                     <Sider width={370} style={{backgroundColor: "#ffffff"}}>
                         <UpInfo name={videoData.user_name}/>

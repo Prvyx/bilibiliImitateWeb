@@ -10,4 +10,12 @@
         from video,user
         where video.fk_user_id=user.user_id and video.video_id=#{videoId};
     </select>
+    <select id="checkIsThumbUp" resultType="string">
+        select user_id from thumb_up_action
+        where video_id=#{videoId} and user_id=#{watchUserId}
+    </select>
+    <select id="checkIsCoin" resultType="string">
+        select user_id from coin_action
+        where video_id=#{videoId} and user_id=#{watchUserId}
+    </select>
 </mapper>

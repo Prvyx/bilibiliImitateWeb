@@ -17,27 +17,13 @@ public class VideoDetail {
     private int video_forward_number;
     private String user_name;
     private List<VideoSelection> videoSelections;
+    private Boolean isThumbUp;
+    private Boolean isCoin;
 
     public VideoDetail() {
     }
 
-    public VideoDetail(String video_id, String video_title, String introduce, String video_path, boolean is_forward_allowed, String video_datetime, int video_play_count, int video_barrage_count, int video_thumb_up_number, int video_coin_number, int video_star_number, int video_forward_number, String user_name) {
-        this.video_id = video_id;
-        this.video_title = video_title;
-        this.introduce = introduce;
-        this.video_path = video_path;
-        this.is_forward_allowed = is_forward_allowed;
-        this.video_datetime = video_datetime;
-        this.video_play_count = video_play_count;
-        this.video_barrage_count = video_barrage_count;
-        this.video_thumb_up_number = video_thumb_up_number;
-        this.video_coin_number = video_coin_number;
-        this.video_star_number = video_star_number;
-        this.video_forward_number = video_forward_number;
-        this.user_name = user_name;
-    }
-
-    public VideoDetail(String video_id, String video_title, String introduce, String video_path, boolean is_forward_allowed, String video_datetime, int video_play_count, int video_barrage_count, int video_thumb_up_number, int video_coin_number, int video_star_number, int video_forward_number, String user_name, List<VideoSelection> videoSelections) {
+    public VideoDetail(String video_id, String video_title, String introduce, String video_path, boolean is_forward_allowed, String video_datetime, int video_play_count, int video_barrage_count, int video_thumb_up_number, int video_coin_number, int video_star_number, int video_forward_number, String user_name, List<VideoSelection> videoSelections, Boolean isThumbUp, Boolean isCoin) {
         this.video_id = video_id;
         this.video_title = video_title;
         this.introduce = introduce;
@@ -52,6 +38,8 @@ public class VideoDetail {
         this.video_forward_number = video_forward_number;
         this.user_name = user_name;
         this.videoSelections = videoSelections;
+        this.isThumbUp = isThumbUp;
+        this.isCoin = isCoin;
     }
 
     public String getVideo_id() {
@@ -166,6 +154,22 @@ public class VideoDetail {
         this.videoSelections = videoSelections;
     }
 
+    public Boolean getThumbUp() {
+        return isThumbUp;
+    }
+
+    public void setThumbUp(Boolean thumbUp) {
+        isThumbUp = thumbUp;
+    }
+
+    public Boolean getCoin() {
+        return isCoin;
+    }
+
+    public void setCoin(Boolean coin) {
+        isCoin = coin;
+    }
+
     @Override
     public String toString() {
         return "VideoDetail{" +
@@ -183,6 +187,8 @@ public class VideoDetail {
                 ", video_forward_number=" + video_forward_number +
                 ", user_name='" + user_name + '\'' +
                 ", videoSelections=" + videoSelections +
+                ", isThumbUp=" + isThumbUp +
+                ", isCoin=" + isCoin +
                 '}';
     }
 }

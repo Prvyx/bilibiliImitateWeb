@@ -20,9 +20,10 @@ public class VideoDetailC {
     @ResponseBody
     public String getVideoSelectionList(@RequestBody Map<String,String> dataMap){
         String videoId= dataMap.get("videoId");
+        String watchUserId=dataMap.get("watchUserId");
 //        System.out.println(videoId);
         DataResult dataResult=new DataResultImpl();
-        VideoDetail videoDetail=new VideoDetailS().getVideoDetail(videoId);
+        VideoDetail videoDetail=new VideoDetailS().getVideoDetail(videoId,watchUserId);
         if(videoDetail.getVideo_id().length()==0){
             dataResult.setStatus(-1);
             dataResult.setMsg("fail");

@@ -2,9 +2,8 @@ package com.prvyx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.prvyx.pojo.LoginStatus;
-import com.prvyx.service.CommonLoginS;
+import com.prvyx.service.UserPlayRecordS;
+import com.prvyx.service.UserThumbUpRecordS;
 import com.prvyx.utils.entity.DataResult;
 import com.prvyx.utils.entity.DataResultImpl;
 import org.springframework.stereotype.Controller;
@@ -15,23 +14,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
+/**
+ * @program: java-bilibili
+ * @description:
+ * @author: Prvyx
+ * @created: 2022/04/02 12:59
+ */
 @Controller
-public class CommonLoginC {
-    @RequestMapping(value = "/api/commonLogin.ajax",method = RequestMethod.POST)
+@RequestMapping(value = "/api")
+public class UserThumbUpRecordC {
+    @RequestMapping(value = "/userThumbUpRecord.ajax",method = RequestMethod.POST)
     @ResponseBody
-    public String getCommonLoginUserId(@RequestBody Map<String,String> dataMap){
-        String userName= dataMap.get("userName");
-        String userPwd=dataMap.get("userPwd");
+    public String userThumbUpRecord(@RequestBody Map<String,String> dataMap){
+        String userId= dataMap.get("userId");
+        String videoId=dataMap.get("videoId");
+        Boolean isThumbUp=dataMap.get("isThumbUp").equals("true");
         DataResult dataResult=new DataResultImpl();
-        LoginStatus loginStatus=new CommonLoginS().getCommonLoginUserId(userName,userPwd);
-        if(!loginStatus.isLogin_status()){
+        if(new UserThumbUpRecordS().userThumbUpRecord(userId, videoId,isThumbUp)){
+            dataResult.setStatus(0);
+            dataResult.setMsg("success");
+            dataResult.setData(null);
+        }else {
             dataResult.setStatus(-1);
             dataResult.setMsg("fail");
             dataResult.setData(null);
-        }else {
-            dataResult.setStatus(0);
-            dataResult.setMsg("success");
-            dataResult.setData(loginStatus);
         }
 
         try {

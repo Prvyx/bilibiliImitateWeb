@@ -28,5 +28,12 @@
         <mapper resource="com/prvyx/dao/video/Video8BySpaceStarMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/InsertVideoMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/CheckVidMapper.xml"/>
+        <mapper resource="com/prvyx/dao/user/UserPlayRecordMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/VideoPlayCountMapper.xml"/>
+        <mapper resource="com/prvyx/dao/user/UserThumbUpRecordMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/VideoThumbUpMapper.xml"/>
+        <mapper resource="com/prvyx/dao/user/UserCoinRecordMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/VideoCoinMapper.xml"/>
+
     </mappers>
 </configuration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.dao.video.VideoThumbUpMapper">
+    <update id="addVideoThumbUp">
+        update video set video_thumb_up_number=video_thumb_up_number+1
+        where video_id=#{videoId}
+    </update>
+    <update id="subVideoThumbUp">
+        update video set video_thumb_up_number=video_thumb_up_number-1
+        where video_id=#{videoId}
+    </update>
+</mapper>
