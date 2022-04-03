@@ -34,6 +34,9 @@
         <mapper resource="com/prvyx/dao/video/VideoThumbUpMapper.xml"/>
         <mapper resource="com/prvyx/dao/user/UserCoinRecordMapper.xml"/>
         <mapper resource="com/prvyx/dao/video/VideoCoinMapper.xml"/>
-
+        <mapper resource="com/prvyx/dao/user/UserStarDirMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/CheckVideoExistStarDirMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/InsertUserStarVideoMapper.xml"/>
+        <mapper resource="com/prvyx/dao/video/DeleteUserStarVideoMapper.xml"/>
     </mappers>
 </configuration>

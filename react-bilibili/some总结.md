@@ -1,5 +1,5 @@
 ### 2022.3.3
-- antd栅格系统的不熟悉，出现了现在未解决的问题
+- antd栅格系统的不熟悉
 ### 2020.3.10
 - 关于循环中如何使用 async/await：https://www.php.cn/js-tutorial-465033.html
 ### 2020.3.12
@@ -71,5 +71,219 @@
 ### 2022.4.1
   - 需求：上传一个视频文件、一个标题字符串、一个介绍字符串到后台
   - 问题：（问题开始出现在react-bilibili/src/components/TopMenu/Member/Upload_c/VideoContribute/index.js文件）react使用antd的Form组件，发现并没有上传的action（而antd的Upload组件就有action）
-  - 解决方法：Form组件其实并不负责与后台交互（写到这，我突然想起了react的初衷==>前端界面框架，并不负责与后台交互）。Upload是个例外。Form表单组件负责”收集数据“，使用onFinish回调。
+  - 解决方法：Form组件其实并不负责与后台交互（写到这，我突然想起了react的初衷 => 前端界面框架，并不负责与后台交互）。Upload是个例外。Form表单组件负责”收集数据“，使用onFinish回调。
 然后你把其中需要的数据进行校验后给FormData（最好使用FormData，不使用的话请求报文默认是三大格式的json格式；且就算自己设置axios请求的headers为multipart/form-data，也会出现没有post正文边界的问题），使用axios把FormData传给后端即可
+#### 2022-4-2
+  - Apipost的使用：注意Mock环境与默认环境的不同。Mock环境是专门mock数据的，而默认环境是测试后端接口的
+  - 使某一行的count+1：
+
+    ```sql
+    update video set video_play_count=video_play_count+1
+    where video_id='41796c186b50'
+    ```
+
+  - watch_action不要设置主键，因为（同一个人、同一个视频）不能确定唯一的观看记录，可以有多条记录
+  - 点赞与投币
+    - 点赞功能：在挂载时获得点赞数的同时，也获得点赞记录的状态，根据该状态渲染是否点赞。后续进行点赞或者取消点赞，把该状态反转后，给后台
+    - 投币功能：在挂载时获得投币数的同时，也获得投币记录的状态，根据该状态渲染是否投币。若为已投币，则提示“已经投过币”。后续进行投币，该状态不用给后台
+
+  - 在/video/xxxx路由组件中，传递新的收藏夹数据时，需要传递两个字符串、一个对象数组
+
+    ```json
+    {
+        "userId": "586422828",
+        "videoId": "BV1GX4y1P7c3",
+        "newStarDirs": [
+            {"star_dir_id": "1", "exist": false},
+            {"star_dir_id": "2", "exist": true},
+            {"star_dir_id": "3", "exist": true},
+            {"star_dir_id": "4", "exist": false},
+            {"star_dir_id": "5", "exist": false},
+            {"star_dir_id": "6", "exist": false},
+            {"star_dir_id": "7", "exist": false},
+            {"star_dir_id": "8", "exist": false}
+        ]
+    }
+    ```
+
+    经过查找资料以及实践，得出：
+
+    前端：
+
+    ```react
+    axios.post(_url,{
+                userId:cookie.load("user_id"),
+                videoId:videoId,
+                newStarDirs:newStarDirs
+            }).then(_d=>{
+                    console.log(_d.data)
+                })
+    ```
+
+    后端：
+
+  ```
+  public String newUserStarDirs(@RequestBody NewUserStarDir newUserStarDir)
+  ```
+
+  ```java
+  package com.prvyx.pojo;
+  
+  import java.io.Serializable;
+  import java.util.List;
+  
+  /**
+   * @program: java-bilibili
+   * @description:
+   * @author: Prvyx
+   * @created: 2022/04/02 20:50
+   */
+  
+  public class NewUserStarDir implements Serializable {
+      private String userId;
+      private String videoId;
+      private List<NewStarDir> newStarDirs;
+  
+      public NewUserStarDir() {
+      }
+  
+      public NewUserStarDir(String userId, String videoId, List<NewStarDir> newStarDirs) {
+          this.userId = userId;
+          this.videoId = videoId;
+          this.newStarDirs = newStarDirs;
+      }
+  
+      public String getUserId() {
+          return userId;
+      }
+  
+      public void setUserId(String userId) {
+          this.userId = userId;
+      }
+  
+      public String getVideoId() {
+          return videoId;
+      }
+  
+      public void setVideoId(String videoId) {
+          this.videoId = videoId;
+      }
+  
+      public List<NewStarDir> getNewStarDirs() {
+          return newStarDirs;
+      }
+  
+      public void setNewStarDirs(List<NewStarDir> newStarDirs) {
+          this.newStarDirs = newStarDirs;
+      }
+  
+      @Override
+      public String toString() {
+          return "NewUserStarDir{" +
+                  "userId='" + userId + '\'' +
+                  ", videoId='" + videoId + '\'' +
+                  ", newStarDirs=" + newStarDirs +
+                  '}';
+      }
+  }
+  
+  ```
+
+  ```java
+  package com.prvyx.pojo;
+  
+  import java.io.Serializable;
+  
+  /**
+   * @program: java-bilibili
+   * @description:
+   * @author: Prvyx
+   * @created: 2022/04/02 22:06
+   */
+  
+  public class NewStarDir implements Serializable {
+      private String star_dir_id;
+      private Boolean exist;
+  
+      public NewStarDir() {
+      }
+  
+      public NewStarDir(String star_dir_id, Boolean exist) {
+          this.star_dir_id = star_dir_id;
+          this.exist = exist;
+      }
+  
+      public String getStar_dir_id() {
+          return star_dir_id;
+      }
+  
+      public void setStar_dir_id(String star_dir_id) {
+          this.star_dir_id = star_dir_id;
+      }
+  
+      public Boolean getExist() {
+          return exist;
+      }
+  
+      public void setExist(Boolean exist) {
+          this.exist = exist;
+      }
+  
+      @Override
+      public String toString() {
+          return "NewStarDir{" +
+                  "star_dir_id='" + star_dir_id + '\'' +
+                  ", exist=" + exist +
+                  '}';
+      }
+  }
+  
+  ```
+
+#### 2022.4.3
+  - react重新渲染的条件：检测setState()参数发生改变。若参数为数组，则需要改变原来的数组引用值，不然react不会检测到改变
+
+  eg：
+
+  ```
+  0: {star_dir_id: '1', star_dir_title: '默认收藏夹', exist: false}
+  1: {star_dir_id: '2', star_dir_title: '数据库设计', exist: false}
+  2: {star_dir_id: '3', star_dir_title: 'Git', exist: false}
+  3: {star_dir_id: '4', star_dir_title: 'Mock的理解以及运作流程', exist: true}
+  4: {star_dir_id: '5', star_dir_title: 'Python', exist: false}
+  5: {star_dir_id: '6', star_dir_title: '前后端分离', exist: false}
+  6: {star_dir_id: '7', star_dir_title: 'SSL', exist: false}
+  7: {star_dir_id: '8', star_dir_title: '并非程序员，而是创造者', exist: false}
+  length: 8
+  [[Prototype]]: Array(0)
+  ```
+
+  前端正确代码：
+
+  ```react
+  <List
+                          itemLayout="horizontal"
+                          dataSource={this.state.starDirs||[]}
+                          renderItem={item => (
+                              <List.Item>
+                                  <List.Item.Meta
+                                      title={<Checkbox defaultChecked={item.exist} onChange={(e)=>{
+                                          const changedStarDirs=this.state.starDirs.map((starDirObj)=>{
+                                              if(starDirObj.star_dir_id===item.star_dir_id)
+                                                  return {...starDirObj,exist:e.target.checked}
+                                              else return {...starDirObj}
+                                          })
+                                          this.setState({starDirs:changedStarDirs})
+                                      }
+                                      } >{item.star_dir_title}</Checkbox>}
+                                  />
+                              </List.Item>
+                          )}
+                      />
+  ```
+
+  不要在onChange回调中直接修改item.exist=e.target.checked，这样react检测不要this.state.starDirs的变化。使用上图所示的方式，使用数组的map()方法，返回新的数组，再把新的数组给this.setState({starDirs:新的数组})，这样react就能检测到啦
+
+  查找资料：https://www.bilibili.com/video/BV1wy4y1D7JT?p=60
+  
+    

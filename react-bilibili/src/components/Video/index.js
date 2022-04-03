@@ -13,7 +13,6 @@ import VideoList from "./VideoList";
 import PlayerBlock from "./PlayerBlock";
 import {Route, Switch} from "react-router-dom";
 import cookie from 'react-cookies'
-import qs from "querystring"
 import axios from "axios";
 const {Content,Sider} = Layout
 
@@ -60,7 +59,7 @@ class Video extends Component {
             forwardCount:videoData.video_forward_number,
             thumbUp:videoData.thumbUp,
             isCoin:videoData.coin,
-            video_id:videoData.video_id
+            video_id:this.props.location.pathname.slice(7)
         }
         return (
             <div>

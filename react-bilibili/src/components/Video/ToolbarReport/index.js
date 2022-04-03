@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from 'antd'
+import StarVideo from './StarVideo'
 import './index.css'
 import axios from "axios";
 import cookie from 'react-cookies'
@@ -34,7 +35,9 @@ class ToolbarReport extends Component {
                             alert('已经投过币了')
                         }
                     }}>{isCoin?'投过了':'未投币'} {coinCount}</Button></li>
-                    <li>收藏：{starCount}</li>
+                    <li>
+                        <StarVideo starCount={starCount} videoId={video_id}/>
+                    </li>
                     <li>
                         转发数：{forwardCount}
                     </li>
