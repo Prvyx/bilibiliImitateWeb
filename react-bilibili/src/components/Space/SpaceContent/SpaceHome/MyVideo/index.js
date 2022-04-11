@@ -13,7 +13,7 @@ class MyVideo extends Component {
     }
 
     getMyVideoData=()=>{
-        let _url='http://localhost:3000/api/video4ByUserId.ajax'
+        let _url='http://localhost:3000/api/user/video4ByUserId.ajax'
         if(this.props.userId!=='-1'){
             axios.post(_url,{userId:this.props.userId})
                 .then(_d=>{

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button,Layout ,Image,Tabs ,List,Input,Space,Row, Col,Avatar} from 'antd';
+import {Modal, Button, Layout, Image, Tabs, List, Input, Space, Row, Col, Avatar, Popover} from 'antd';
 import {Link} from "react-router-dom";
 import cookie from 'react-cookies'
 import axios from "axios";
@@ -38,15 +38,16 @@ const UserAvatar = () => {
     };
 
     const commonLogin=()=>{
-        let _url='http://localhost:3000/api/commonLogin.ajax'
+        let _url='http://localhost:3000/api/user/commonLogin.ajax'
         axios.post(_url,{
             userName:commonLoginUserName,
             userPwd:commonLoginUserPwd
         }).then(_d=>{
             if(_d.data.status===0){
-                let cookieTime = new Date(new Date().getTime + 24 * 3600);
+                let cookieTime = new Date(new Date().getTime + 24 * 3600 * 1000);
                 cookie.save('user_id',_d.data.data.user_id,{expires:cookieTime})
                 handleOk()
+                window.location.reload();
             }else{
                 alert('登录失败')
             }
@@ -64,9 +65,16 @@ const UserAvatar = () => {
                     if(user_id===undefined){
                         return (
                             <>
-                                <Button type="primary" shape="circle" onClick={showModal} >
-                                    登录
-                                </Button>
+                                <Popover content={(
+                                    <Button type="link" onClick={()=>{
+                                        showModal();
+                                    }}>立即登录</Button>
+                                )} title="登陆后你可以">
+                                    <Button type="primary" shape="circle" onClick={showModal}>
+                                        登录
+                                    </Button>
+                                </Popover>
+
                                 <Modal visible={isModalVisible}
                                        width={`820px`}
                                        onOk={handleOk} onCancel={handleCancel}
@@ -176,12 +184,24 @@ const UserAvatar = () => {
                         return (
                             <Avatar className={`avatar`}
                                     src={
-                                        <Link to={`/space/${cookie.load('user_id')}`} target={`_blank`}>
-                                            <img alt={`example`}
-                                                 src={`/static/space/${cookie.load('user_id')}/avatar.png`}
-                                                 width='38px'>
-                                            </img>
-                                        </Link>
+                                        <Popover content={(
+                                            <Button type="link" onClick={()=>{
+                                                cookie.remove('user_id',{path:'/'});
+                                                if(cookie.load('user_id')===undefined){
+                                                    window.location.reload();
+                                                }else {
+                                                    alert('请手动刷新页面')
+                                                }
+
+                                            }}>退出登录</Button>
+                                        )} title="用户名">
+                                            <Link to={`/space/${cookie.load('user_id')}`} target={`_blank`}>
+                                                <img alt={`example`}
+                                                     src={`/static/space/${cookie.load('user_id')}/avatar.png`}
+                                                     width='38px'>
+                                                </img>
+                                            </Link>
+                                        </Popover>
                                     }
                             />
                         )

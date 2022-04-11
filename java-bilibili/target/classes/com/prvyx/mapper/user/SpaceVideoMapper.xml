@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.mapper.user.SpaceVideoMapper">
+    <select id="selectTopVideo" resultType="com.prvyx.model.domain.SpaceVideo">
+        select video_id, video_title, introduce, video_img_path, video_play_count, video_barrage_count, video_datetime
+        from video where fk_user_id=#{userId} and is_top_video=true
+    </select>
+    <select id="selectRepresentativeWork" resultType="com.prvyx.model.domain.SpaceVideo">
+        select video_id, video_title, introduce, video_img_path, video_play_count, video_barrage_count, video_datetime
+        from video where fk_user_id=#{userId} and is_representative_video=true
+    </select>
+    <select id="selectCoinVideo" resultType="com.prvyx.model.domain.VideoByUserId">
+        select coin_action.video_id, video_title, video_img_path, video_play_count, video_datetime
+        from video,coin_action where coin_action.video_id=video.video_id and coin_action.user_id=#{userId}
+        ORDER BY video_datetime DESC
+    </select>
+    <select id="selectThumbUpVideo" resultType="com.prvyx.model.domain.VideoByUserId">
+        select thumb_up_action.video_id, video_title, video_img_path, video_play_count, video_datetime
+        from video,thumb_up_action where thumb_up_action.video_id=video.video_id and thumb_up_action.user_id=#{userId}
+        ORDER BY video_datetime DESC
+    </select>
+    <select id="selectLatestVideo" resultType="com.prvyx.model.domain.VideoByUserId">
+        SELECT video_id,video_title,video_img_path,video_play_count,video_datetime
+        FROM video
+        where fk_user_id=#{userId}
+        ORDER BY video_datetime DESC
+    </select>
+    <select id="selectPlayCountDescVideo" resultType="com.prvyx.model.domain.VideoByUserId">
+        SELECT video_id,video_title,video_img_path,video_play_count,video_datetime
+        FROM video
+        where fk_user_id=#{userId}
+        ORDER BY video_play_count DESC
+    </select>
+    <select id="selectStarNumberDescVideo" resultType="com.prvyx.model.domain.VideoByUserId">
+        SELECT video_id,video_title,video_img_path,video_play_count,video_datetime
+        FROM video
+        where fk_user_id=#{userId}
+        ORDER BY video_star_number DESC
+    </select>
+</mapper>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.prvyx.dao.video.InsertVideoMapper">
-    <insert id="getVideoContribute">
-        insert into video(video_id, video_title, introduce, video_img_path, video_path, is_forward_allowed, video_datetime, video.fk_user_id, video.fk_category_id, video.fk_channel_id) values(#{videoId},#{videoTitle},#{introduce},#{videoImgPath},#{videoPath},#{isForwardAllowed},#{videoDatetime},#{fkUserId},#{fkCategoryId},#{fkChannelId});
-    </insert>
-</mapper>

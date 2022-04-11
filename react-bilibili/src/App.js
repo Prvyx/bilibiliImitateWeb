@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import React,{ useState } from "react";
 import './App.less';
 import 'antd/dist/antd.less';
-import { Layout ,Affix,Button} from 'antd';
+import { Layout,BackTop} from 'antd';
 import {Redirect, Route, Switch} from "react-router-dom";
 
 // 自定义一般组件
@@ -91,6 +90,18 @@ function App() {
         </Switch>
 
         <Footer>本站点是简易版小破站</Footer>
+        <BackTop style={{marginRight:-55}}>
+            <div style={{
+                height: 40,
+                width: 40,
+                lineHeight: '40px',
+                borderRadius: 4,
+                backgroundColor: '#1da57a',
+                color: '#fff',
+                textAlign: 'center',
+                fontSize: 12,
+            }}>顶部</div>
+        </BackTop>
     </div>
   );
 }

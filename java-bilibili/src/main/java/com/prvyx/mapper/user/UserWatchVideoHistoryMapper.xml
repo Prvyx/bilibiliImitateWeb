@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.mapper.user.UserWatchVideoHistoryMapper">
+    <select id="getUserWatchVideoHistory" resultType="com.prvyx.model.domain.UserWatchVideoHistory">
+        select video.video_id,user_name,video_title,video_img_path,watch_datetime from user,video,(
+            select user_id, video_id, MAX(watch_datetime) AS watch_datetime from watch_action
+            where user_id=#{userId}
+            GROUP BY video_id
+        ) AS temp
+        where temp.video_id=video.video_id and user.user_id=video.fk_user_id
+    </select>
+</mapper>

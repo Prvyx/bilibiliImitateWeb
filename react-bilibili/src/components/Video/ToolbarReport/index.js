@@ -12,7 +12,7 @@ class ToolbarReport extends Component {
             <div className={`toolBar`}>
                 <ul className={`toolBarUl`}>
                     <li><Button type="link" onClick={()=>{
-                        let _url='http://localhost:3000/api/userThumbUpRecord.ajax'
+                        let _url='http://localhost:3000/api/user/userThumbUpRecord.ajax'
                         axios.post(_url,{userId:cookie.load('user_id'),videoId:video_id,isThumbUp:(!thumbUp).toString()})
                             .then(_d=>{
                                 console.log(_d.data)
@@ -23,7 +23,7 @@ class ToolbarReport extends Component {
                     }}>{thumbUp?'点过了':'点赞'} {thumbUpCount}</Button></li>
                     <li><Button type="link" onClick={()=>{
                         if(!isCoin){
-                            let _url='http://localhost:3000/api/userCoinRecord.ajax'
+                            let _url='http://localhost:3000/api/user/userCoinRecord.ajax'
                             axios.post(_url,{userId:cookie.load('user_id'),videoId:video_id})
                                 .then(_d=>{
                                     console.log(_d.data)

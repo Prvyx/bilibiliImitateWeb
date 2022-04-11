@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.mapper.video.VideoListByStarDirIdMapper">
+    <select id="getVideoListByStarDirId" resultType="com.prvyx.model.domain.VideoListByStarDirId">
+        select video_id, star_datetime, video_title, video_img_path,video_play_count,video_star_number,user_name,video_datetime
+        from star_action,video,user
+        where fk_video_id=video_id and video.fk_user_id=user.user_id and star_action.fk_user_id=#{userId} and fk_star_dir_id=#{starDirId}
+    </select>
+</mapper>

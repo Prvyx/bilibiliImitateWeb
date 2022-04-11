@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Layout, Card, Row, Col, Empty} from 'antd'
+import {Layout, Card, Row, Col, Empty, Button} from 'antd'
 import './index.css'
 import axios from "axios";
 import ShowListRank from "./ShowListRank";
@@ -11,12 +11,12 @@ const {Meta} = Card
 class ShowList extends Component {
     state={}
 
-    getShowList(id){
+    getShowList=(id)=>{
         // 注释mock
         // let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/"
         // let _api=id+"_api"
         // console.log("_api:",_api)
-        let _url='http://localhost:3000/api/indexShowList.ajax'
+        let _url='http://localhost:3000/api/video/indexShowList.ajax'
         axios.post(_url,{categoryId:id})
             .then(_d=>{
                 // 注释mock
@@ -55,7 +55,7 @@ class ShowList extends Component {
         }else {
             return (
                 <Layout style={{marginBottom:30,backgroundColor: "#ffffff"}}>
-                    <Content style={{backgroundColor: ""}}>
+                    <Content style={{position:'relative',backgroundColor: ""}}>
                         <Card title={`${title}`} style={{ width: 915 ,height: 500,marginLeft: 18,marginBottom: -10}} bordered={false}>
                             <div className="site-card-wrapper">
                                 <Row gutter={[16,16]} justify="end">
@@ -88,6 +88,13 @@ class ShowList extends Component {
                                 </Row>
                             </div>
                         </Card>
+                        <Button type="primary" style={{position:'absolute',top:20,right:15}}
+                                onClick={()=>{
+                                    this.getShowList(this.props.id)
+                                }}
+                        >
+                            <div>换一换</div>
+                        </Button>
                     </Content>
                     <ShowListRank id={this.props.id}/>
                 </Layout>

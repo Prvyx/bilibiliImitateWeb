@@ -32,7 +32,7 @@ class Video extends Component {
         // let _api=`video${this.state.id}_api`
 
         // 向后台要数据
-        let _url='http://localhost:3000/api/videoDetail.ajax'
+        let _url='http://localhost:3000/api/video/videoDetail.ajax'
         axios.post(_url,{videoId:this.state.id,watchUserId:cookie.load('user_id')})
             .then(_d=>{
                 console.log(_d.data)
@@ -78,7 +78,7 @@ class Video extends Component {
                         <ToolbarReport {...sanlian} callback1={this.callback1}/>
                     </Content>
                     <Sider width={370} style={{backgroundColor: "#ffffff"}}>
-                        <UpInfo name={videoData.user_name}/>
+                        <UpInfo name={videoData.user_name} userAvatarPath={videoData.user_avatar_path}/>
                         <VideoList id={videoData.video_id} parts={videoData.videoSelections}/>
                     </Sider>
                 </Layout>

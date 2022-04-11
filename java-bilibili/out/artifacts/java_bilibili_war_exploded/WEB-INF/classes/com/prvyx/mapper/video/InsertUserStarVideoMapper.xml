@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.mapper.video.InsertUserStarVideoMapper">
+    <insert id="insertUserStarVideo">
+        insert into star_action( fk_user_id, fk_video_id,star_datetime, fk_star_dir_id)
+        values(#{userId},#{videoId},#{starDateTime},#{starDir})
+    </insert>
+</mapper>

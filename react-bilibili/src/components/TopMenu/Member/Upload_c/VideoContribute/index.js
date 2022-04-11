@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, Upload, Tabs, message, Image} from "antd";
+import {Button, Form, Input, Upload, Tabs, message, Checkbox,Select} from "antd";
 import {UploadOutlined} from "@ant-design/icons";
 import axios from "axios";
-const {TabPane}=Tabs
-
+import cookie from 'react-cookies'
+const { Option } = Select;
 let imgFile;
+function handleChange(value) {
+    console.log(`selected ${value}`);
+}
 const toThumbFile = blob => new File([blob], 'thumb__img.png')
 // file为视频的文件对象，可使用 input[file] 进行获取
 const loadVideo = function(file) {
@@ -25,9 +28,11 @@ const loadVideo = function(file) {
 }
 const properties = {
     name: 'videoContributeForm',
-    action: 'http://localhost:3000/api/getVideoContribute.ajax',
+    // action: 'http://localhost:3000/api/getVideoContribute.ajax',
+    maxCount:1,
     onChange(info) {
-        console.log('11111')
+        console.log(info.file.name)
+        document.getElementById("title").value=info.file.name.substr(0,info.file.name.lastIndexOf('.'));
         loadVideo(info.file.originFileObj).then(videoElem => {
             const canvasElem = document.createElement('canvas')
             const { videoWidth, videoHeight } =  videoElem
@@ -70,17 +75,19 @@ const properties = {
     },
 };
 class VideoContribute extends Component {
-
+    // 提交表单
     onFinish = (values) => {
-        console.log(values);
-        debugger
+        // console.log(values)
         let formData=new FormData()
         formData.append('videoContribute',values.videoContribute.file.originFileObj)
         formData.append('firstImg',imgFile)
-        formData.append('title',values.title)
+        formData.append('title',values.title||document.getElementById("title").value)
         formData.append('introduce',values.introduce)
+        formData.append('category',values.category)
+        formData.append('forwardPermission',values.forwardPermission||false)
+        formData.append('userId',cookie.load('user_id'))
         console.log(formData)
-        let _url='http://localhost:3000/api/getVideoContribute.ajax'
+        let _url='http://localhost:3000/api/user/contribute/getVideoContribute.ajax'
         const config = {
             headers: { "Content-Type": "multipart/form-data" }
         };
@@ -100,21 +107,22 @@ class VideoContribute extends Component {
 
     render() {
         return (
-            <Form onFinish={this.onFinish}
+            <Form ref={this.formRef} onFinish={this.onFinish}
                   onFinishFailed={this.onFinishFailed}>
                 <Form.Item name="videoContribute">
                     <Upload accept='video/*' customRequest={this.submitF} {...properties}>
                         <Button icon={<UploadOutlined />}>Click to Upload</Button>
                     </Upload>
                 </Form.Item>
+                <span>首页图片</span>
                 <Form.Item name="firstImg">
-                    <span>首页图片</span>
-                    <img id='firstImg' width="auto" height="300px"/>
+                    <img id='firstImg' width="auto" height="120px"/>
                 </Form.Item>
                 <Form.Item name="title">
                     <Input
                         prefix={`标题`}
                         style={{width:350}}
+                        id="title"
                     />
                 </Form.Item>
                 <Form.Item name="introduce">
@@ -123,9 +131,29 @@ class VideoContribute extends Component {
                         style={{width:350}}
                     />
                 </Form.Item>
+                <Form.Item name="category">
+                    <Select style={{ width: 120 }}>
+                        <Option value="living">生活</Option>
+                        <Option value="anime">番剧</Option>
+                        <Option value="cartoon">动画</Option>
+                        <Option value="competition">赛事</Option>
+                        <Option value="dance">舞蹈</Option>
+                        <Option value="foods">美食</Option>
+                        <Option value="game">游戏</Option>
+                        <Option value="knowledge">游戏</Option>
+                        <Option value="live">直播</Option>
+                        <Option value="music">音乐</Option>
+                        <Option value="sports">运动</Option>
+                    </Select>
+                </Form.Item>
+                <Form.Item name="forwardPermission">
+                    <Checkbox id="forwardPermission" onChange={(e)=>{
+                        this.formRef.current.setFieldsValue({forwardPermission:e.target.checked})
+                    }}>允许转载</Checkbox>
+                </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        投稿
                     </Button>
                 </Form.Item>
             </Form>

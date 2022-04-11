@@ -14,7 +14,7 @@ class SpaceStar extends Component {
     state={}
     // 获取收藏夹列表
     getStarDirData=()=>{
-        let _url='http://localhost:3000/api/starDir.ajax'
+        let _url='http://localhost:3000/api/user/starDir.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 console.log(_d.data)
@@ -28,7 +28,7 @@ class SpaceStar extends Component {
     }
     // 获取某个收藏夹的视频列表
     getVideoList(starDirId){
-        let _url='http://localhost:3000/api/videoListByStarDirId.ajax'
+        let _url='http://localhost:3000/api/video/videoListByStarDirId.ajax'
         axios.post(_url,{userId:cookie.load('user_id'),starDirId:starDirId})
             .then(_d=>{
                 console.log(_d.data)

@@ -15,28 +15,33 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/prvyx/dao/user/UserMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/IndexVideoMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/IndexShowListVideoMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoSelectionMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoDetailMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/CommonLoginMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/StarDirRetrieveMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoListByStarDirIdMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/UpBasicInfoMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/Video4ByUserIdMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/Video8BySpaceStarMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/InsertVideoMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/CheckVidMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/UserPlayRecordMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoPlayCountMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/UserThumbUpRecordMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoThumbUpMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/UserCoinRecordMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/VideoCoinMapper.xml"/>
-        <mapper resource="com/prvyx/dao/user/UserStarDirMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/CheckVideoExistStarDirMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/InsertUserStarVideoMapper.xml"/>
-        <mapper resource="com/prvyx/dao/video/DeleteUserStarVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/IndexVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/IndexShowListVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/VideoSelectionMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/VideoDetailMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/CommonLoginMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/StarDirRetrieveMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/VideoListByStarDirIdMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UpBasicInfoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/Video4ByUserIdMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/Video8BySpaceStarMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/InsertVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/CheckVidMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserPlayRecordMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/VideoPlayCountMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserThumbUpRecordMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/VideoThumbUpMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserCoinRecordMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/VideoCoinMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserStarDirMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/CheckVideoExistStarDirMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/InsertUserStarVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/video/DeleteUserStarVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserFanMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserFocusMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/SpaceVideoMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/UserWatchVideoHistoryMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/CreateNewStarDirMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Col, Row,Card,Empty  } from "antd";
+import {Col, Row,Card,Empty,Button  } from "antd";
 
 import './index.css'
 import axios from "axios";
@@ -15,7 +15,7 @@ class RecommendContainer extends Component {
     getData=()=>{
         let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/"
         let _api='recommendContainer_api'
-        axios.post('http://localhost:3000/api/recommendContainer.ajax',{userId:'1'})
+        axios.post('http://localhost:3000/api/video/recommendContainer.ajax',{userId:'1'})
             .then(_d=>{
                 if(_d.data.status===0){
                     this.setState({recommendList:_d.data.data})
@@ -39,8 +39,8 @@ class RecommendContainer extends Component {
             )
         }else{
             return (
-                <Col span={15}>
-                    <Row gutter={[10, 20]}>
+                <Col span={15} >
+                    <Row gutter={[10, 20]} style={{position: 'relative'}}>
                         {
                             (this.state.recommendList||[]).map((recommendObj)=>{
                                 return (
@@ -67,6 +67,14 @@ class RecommendContainer extends Component {
                                 )
                             })
                         }
+                        <Button type="primary"
+                                style={{position:'absolute',top:10,right:10,padding: '0 10px',width: 40,height:80,borderRadius: 8}}
+                                onClick={this.getData}
+                        >
+                            <div>换</div>
+                            <div>一</div>
+                            <div>换</div>
+                        </Button>
                     </Row>
                 </Col>
             );

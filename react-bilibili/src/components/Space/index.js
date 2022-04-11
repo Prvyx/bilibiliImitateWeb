@@ -9,7 +9,7 @@ class Space extends Component {
     state={}
 
     getUpBasicInfo=()=>{
-        let _url='http://localhost:3000/api/UpBasicInfo.ajax'
+        let _url='http://localhost:3000/api/user/UpBasicInfo.ajax'
         axios.post(_url,{userId:this.props.userId})
             .then(_d=>{
                 if(_d.data.status===0){

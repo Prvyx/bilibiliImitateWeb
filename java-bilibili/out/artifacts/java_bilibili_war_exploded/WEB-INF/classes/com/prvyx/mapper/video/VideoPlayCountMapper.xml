@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.mapper.video.VideoPlayCountMapper">
+    <update id="updateVideoPlayCount">
+        update video set video_play_count=video_play_count+1
+        where video_id=#{videoId}
+    </update>
+</mapper>

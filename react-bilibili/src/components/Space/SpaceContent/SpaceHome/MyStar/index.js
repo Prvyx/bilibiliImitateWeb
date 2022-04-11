@@ -35,7 +35,7 @@ class MyStar extends Component {
     state={}
     getVideo8BySpaceStar=()=>{
         if(this.props.userId!=='-1'){
-            let _url='http://localhost:3000/api/video8BySpaceStar.ajax'
+            let _url='http://localhost:3000/api/user/video8BySpaceStar.ajax'
             axios.post(_url,{userId:this.props.userId})
                 .then(_d=>{
                     console.log(_d.data)

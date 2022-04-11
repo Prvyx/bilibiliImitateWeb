@@ -7,7 +7,7 @@ import cookie from 'react-cookies'
 class PlayerBlock extends Component {
     submitPlayRecord=()=>{
         const videoId=this.props.location.pathname.slice(7);
-        let _url='http://localhost:3000/api/userPlayRecord.ajax'
+        let _url='http://localhost:3000/api/user/userPlayRecord.ajax'
         axios.post(_url,{userId:cookie.load('user_id'),videoId:videoId})
             .then(_d=>{
                 console.log(_d.data)

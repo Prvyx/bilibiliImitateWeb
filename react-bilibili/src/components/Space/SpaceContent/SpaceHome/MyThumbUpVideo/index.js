@@ -1,44 +1,46 @@
 import React, {Component} from 'react';
 import {Card, List} from "antd";
-
-const data2 = [
-    {
-        title: 'Title 1',
-    },
-    {
-        title: 'Title 2',
-    },
-    {
-        title: 'Title 3',
-    },
-    {
-        title: 'Title 4',
-    },
-    {
-        title: 'Title 5',
-    },
-    {
-        title: 'Title 6',
-    },
-    {
-        title: 'Title 7',
-    },
-    {
-        title: 'Title 8',
-    },
-];
-
+import axios from "axios";
+import cookie from "react-cookies";
+const {Meta}=Card
 class MyThumbUpVideo extends Component {
+    state={}
+    componentDidMount() {
+        this.getThumbUpVideo()
+    }
+    // 拉取最近点赞视频列表数据
+    getThumbUpVideo(){
+        let _url='http://localhost:3000/api/user/thumbUpVideo.ajax'
+        axios.post(_url,{userId:cookie.load('user_id')})
+            .then(_d=>{
+                if(_d.data.status===0){
+                    this.setState({myThumbUpVideoData:_d.data.data})
+                }
+            })
+    }
     render() {
+        const myThumbUpVideoData=this.state.myThumbUpVideoData||[]
         return (
             <div>
                 <span>最近点赞的视频</span>
                 <List
                     grid={{ gutter: 16, column: 4 }}
-                    dataSource={data2}
+                    dataSource={myThumbUpVideoData}
                     renderItem={item => (
-                        <List.Item>
-                            <Card title={item.title}>Card content</Card>
+                        <List.Item key={item.video_id}>
+                            <Card
+                                hoverable
+                                style={{ width: "100%" ,height:"100%"}}
+                                cover={<img onClick={()=>{window.open("https://www.bilibili.com/","_blank")}} alt="example" src={`${item.video_img_path}`} style={{borderRadius:8}}/>}
+                                size={"small"}
+                            >
+                                <Meta
+                                    style={{fontSize: 12}}
+                                    title={<a href="https://www.bilibili.com/"
+                                              target={`_blank`}>{`${item.video_title}`}</a>}
+                                    description={<a href="https://www.bilibili.com/" target={`_blank`}>播放量:{`${item.video_play_count}`} · {`${item.video_datetime}`}</a>}
+                                />
+                            </Card>
                         </List.Item>
                     )}
                 />

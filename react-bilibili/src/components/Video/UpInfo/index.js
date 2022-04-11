@@ -8,7 +8,9 @@ class UpInfo extends Component {
             <Row>
                 <Col flex="100px" style={{backgroundColor: ""}}>
                     <div style={{marginLeft: 5}}>
-                        <Avatar size={64} src={<Image src="https://joeschmoe.io/api/v1/random" style={{ width: 32 }} />} />
+                        <Avatar size={64} src={<Image preview={false}
+                                                      src={this.props.userAvatarPath}
+                                                      style={{ width: 50 ,borderRadius: 25}} />} />
                     </div>
                 </Col>
                 <Col flex="auto">
