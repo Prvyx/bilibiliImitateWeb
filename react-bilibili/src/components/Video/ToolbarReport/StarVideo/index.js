@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Modal, Button, List, Checkbox, Input} from 'antd';
 import axios from "axios";
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 
 class StarVideo extends Component {
     state={isModalVisible:false,starDirs:[]}
@@ -11,7 +13,7 @@ class StarVideo extends Component {
 
     getStarDir=(videoId)=>{
         console.log('请求数据')
-        let _url='http://localhost:3000/api/user/userStarDir.ajax'
+        let _url=BASE_URL+'/api/user/userStarDir.ajax'
         axios.post(_url,{userId:cookie.load("user_id"),videoId:this.props.videoId})
             .then(_d=>{
                 if(_d.data.status===0){
@@ -23,7 +25,7 @@ class StarVideo extends Component {
     }
     // 发送新的该视频的收藏夹状态
     sendStarDir=(videoId)=>{
-        let _url='http://localhost:3000/api/newUserStarDir.ajax'
+        let _url=BASE_URL+'/api/user/newUserStarDir.ajax'
         let i=0;
         let newStarDirs=[]
         // console.log(this.state.starDirs)
@@ -46,7 +48,7 @@ class StarVideo extends Component {
     // 新建收藏夹
     createNewStarDir=(newStarDirTitle)=>{
         console.log(newStarDirTitle)
-        let _url='http://localhost:3000/api/user/createNewStarDir.ajax'
+        let _url=BASE_URL+'/api/user/createNewStarDir.ajax'
         axios.post(_url,{userId:cookie.load('user_id'),starDirTitle:newStarDirTitle})
             .then(_d=>{
                 if(_d.data.status===0){

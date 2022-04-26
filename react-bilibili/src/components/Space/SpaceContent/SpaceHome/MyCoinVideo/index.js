@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Card, List} from "antd";
 import axios from "axios";
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 const {Meta}=Card
 
 class MyCoinVideo extends Component {
@@ -12,7 +14,7 @@ class MyCoinVideo extends Component {
 
     // 拉取最近投币视频列表数据
     getCoinVideo(){
-        let _url='http://localhost:3000/api/user/coinVideo.ajax'
+        let _url=BASE_URL+'/api/user/coinVideo.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 this.setState({myCoinVideoData:_d.data.data})

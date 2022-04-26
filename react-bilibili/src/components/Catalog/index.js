@@ -1,31 +1,61 @@
 import React, {Component} from 'react';
 import {FireOutlined} from '@ant-design/icons'
-import {Row, Col, Menu} from 'antd';
-import {Link} from 'react-router-dom'
+import {Row, Col} from 'antd';
+import {Link, NavLink} from 'react-router-dom'
 import './index.css'
 import CatalogCol from "./CatalogCol";
+import MessageIcon from "../TopMenu/Icon/MessageIcon";
+import DynamicIcon from "./Icon/DynamicIcon";
+import HotIcon from "./Icon/HotIcon";
+import ChannelIcon from "./Icon/ChannelIcon";
+import ColumnIcon from "./Icon/ColumnIcon";
+import ClassroomIcon from "./Icon/ClassroomIcon";
+import NewSong from "./Icon/Newsong";
+import ActivityIcon from "./Icon/ActivityIcon";
+import CommunityIcon from "./Icon/CommunityIcon";
+import LiveIcon from "./Icon/LiveIcon";
 class Catalog extends Component {
     render() {
         return (
             <div id={`catalog`} className={`catalog`}>
                 <Row justify="center">
                     {/*<Col span={1} className={`channel-icons`}></Col>*/}
-                    <Col span={6} className={`channel-icons`}>
+                    <Col span={5} className={`channel-icons`} style={{marginLeft:-70}}>
                         <Row  gutter={[0,8]} justify="center">
                             <Col span={5}>
-                                <span>动态</span>
+                                <NavLink to={`/dynamic`} target={`_blank`}>
+                                    <div style={{marginLeft:13,width:40,height:40,borderRadius:20,backgroundColor:'#ff9212'}}>
+                                        <DynamicIcon style={{marginTop:8,marginLeft:2}}/>
+                                    </div>
+                                    <div style={{height:10}}>
+                                        <span>动态</span>
+                                    </div>
+                                </NavLink>
                             </Col>
                             <Col span={5}>
-                                <FireOutlined/>
-                                <span>热门</span>
+                                <NavLink to={`/hot`} target={`_blank`}>
+                                    <div style={{marginLeft:13,width:40,height:40,borderRadius:20,backgroundColor:'#f07775'}}>
+                                        <HotIcon style={{marginTop:8,marginLeft:2}}/>
+                                    </div>
+                                    <div style={{height:10}}>
+                                        <span>热门</span>
+                                    </div>
+                                </NavLink>
                             </Col>
                             <Col span={5}>
-                                <span>频道</span>
+                                <NavLink to={`/channel`} target={`_blank`}>
+                                    <div style={{marginLeft:12,width:40,height:40,borderRadius:20,backgroundColor:'#59ca73'}}>
+                                        <ChannelIcon style={{marginTop:8,marginLeft:2}}/>
+                                    </div>
+                                    <div style={{height:10}}>
+                                        <span>频道</span>
+                                    </div>
+                                </NavLink>
                             </Col>
                         </Row>
                     </Col>
                     <Col span={12} className={`channel-items__left`}>
-                        <Row gutter={[45, 10]} justify="space-around">
+                        <Row gutter={[45, 12]} justify="space-around">
                             <CatalogCol>
                                 <Link to={`/anime`} target={`_blank`}>番剧</Link>
                             </CatalogCol>
@@ -82,17 +112,26 @@ class Catalog extends Component {
                             </CatalogCol>
                         </Row>
                     </Col>
-                    <Col span={4} className={`channel-items__right`}>
-                        <Row gutter={[25,8]} justify="center">
-                            <Col span={2/3}>
-                                专栏
+                    <Col span={5} className={`channel-items__right`} style={{marginLeft:50,borderLeft:'1px solid #e3e5e7'}}>
+                        <Row gutter={[1,8]} justify="center">
+                            <Col span={8}>
+                                <div><ColumnIcon/><span>专栏</span></div>
                             </Col>
-                            <Col span={2/3}>活动</Col>
-                            <Col span={2/3}>社区中心</Col>
-
-                            <Col span={2/3}>直播</Col>
-                            <Col span={2/3}>课堂</Col>
-                            <Col span={2/3}>新歌热榜</Col>
+                            <Col span={8}>
+                                <ActivityIcon/><span>活动</span>
+                            </Col>
+                            <Col span={8}>
+                                <CommunityIcon/><span>社区中心</span>
+                            </Col>
+                            <Col span={8}>
+                                <LiveIcon/><span>直播</span>
+                            </Col>
+                            <Col span={8}>
+                                <ClassroomIcon/><span>课堂</span>
+                            </Col>
+                            <Col span={8}>
+                                <NewSong/><span>新歌热榜</span>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>

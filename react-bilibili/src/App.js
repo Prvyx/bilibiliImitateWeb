@@ -6,7 +6,6 @@ import {Redirect, Route, Switch} from "react-router-dom";
 
 // 自定义一般组件
 import TopMenu from "./components/TopMenu";
-import Catalog from "./components/Catalog";
 
 // 自定义路由组件
 import Index from './pages/Index'

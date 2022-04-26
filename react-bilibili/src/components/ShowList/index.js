@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {Layout, Card, Row, Col, Empty, Button} from 'antd'
 import './index.css'
 import axios from "axios";
+import {BASE_URL} from 'utils/url'
 import ShowListRank from "./ShowListRank";
 import {Link} from "react-router-dom";
+
 
 const {Content} = Layout
 const {Meta} = Card
@@ -16,7 +18,7 @@ class ShowList extends Component {
         // let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/"
         // let _api=id+"_api"
         // console.log("_api:",_api)
-        let _url='http://localhost:3000/api/video/indexShowList.ajax'
+        let _url=BASE_URL+'/api/video/indexShowList.ajax'
         axios.post(_url,{categoryId:id})
             .then(_d=>{
                 // 注释mock

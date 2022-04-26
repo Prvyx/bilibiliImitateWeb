@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {NavLink,Link} from 'react-router-dom'
-import {Menu, Space, Input, Avatar, Image, Popover, Tabs, Layout, List, Card, Col, Row} from 'antd';
+import {Menu, Space, Input, Image, Popover, Tabs, List, Col, Row, Button} from 'antd';
 import BilibiliIcon from './Icon/BilibiliIcon'
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 // 路由
 import Anime from '../../pages/Section/Anime'
 import Live from '../../pages/Section/Live'
@@ -23,10 +25,15 @@ import './index.css'
 import UserAvatar from "./UserAvatar";
 import {UserOutlined} from "@ant-design/icons";
 import axios from "axios";
+import VipIcon from "./Icon/VipIcon";
+import MessageIcon from "./Icon/MessageIcon";
+import DynamicIcon from "./Icon/Dynamic";
+import FavoriteIcon from "./Icon/FavoriteIcon";
+import HistoryIcon from "./Icon/HistoryIcon";
+import WritingCenter from "./Icon/WritingCenter";
+import UploadIcon from "./Icon/UploadIcon";
 const { Search } = Input;
 const { TabPane } = Tabs;
-const {Sider,Content}=Layout
-const {Meta}=Card
 const onSearch = value => {};
 class TopMenu extends Component {
     state = {
@@ -38,7 +45,7 @@ class TopMenu extends Component {
     }
     // 获取收藏夹列表
     getStarDirs=()=>{
-        let _url='http://localhost:3000/api/user/starDir.ajax'
+        let _url=BASE_URL+'/api/user/starDir.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 if(_d.data.status===0){
@@ -48,7 +55,7 @@ class TopMenu extends Component {
     }
     // 获取某个收藏夹的视频列表
     getVideoList(starDirId){
-        let _url='http://localhost:3000/api/video/videoListByStarDirId.ajax'
+        let _url=BASE_URL+'/api/video/videoListByStarDirId.ajax'
         axios.post(_url,{userId:cookie.load('user_id'),starDirId:starDirId})
             .then(_d=>{
                 this.setState({videoListByStarDirId:_d.data.data})
@@ -57,7 +64,7 @@ class TopMenu extends Component {
 
     // 拉取某个用户的观看视频的历史记录
     getWatchHistoryList=()=>{
-        let _url='http://localhost:3000/api/user/watchVideoHistory.ajax'
+        let _url=BASE_URL+'/api/user/watchVideoHistory.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 console.log(_d.data.data)
@@ -98,31 +105,52 @@ class TopMenu extends Component {
                         <Menu.Item key="competition">
                             <NavLink to={`/competition`} target={`_blank`}>赛事</NavLink>
                         </Menu.Item>
-                        <li className={`top-menu-input`}>
+                        <li className={`top-menu-input`} style={{marginLeft:-10}}>
                             <Search placeholder="input search text" onSearch={onSearch} enterButton />
                         </li>
-                        <Menu.Item key="user" style={{marginLeft: 30}}>
+                        <Menu.Item key="user" style={{marginLeft: -5}}>
                             <UserAvatar/>
                         </Menu.Item>
                         <Popover content={(
                             <div>大会员</div>
                         )} title="大会员">
                             <Menu.Item key="vip">
-                                <NavLink to={`/vip`} target={`_blank`}>大会员</NavLink>
+                                <NavLink to={`/vip`} target={`_blank`}>
+                                    <div style={{marginTop:-25,paddingLeft:10,height:21}}>
+                                        <VipIcon/>
+                                    </div>
+                                    <div style={{marginTop:-5,height:10}}>
+                                        <span>大会员</span>
+                                    </div>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                         <Popover content={(
                             <div>消息</div>
                         )} title="消息">
                             <Menu.Item key="message">
-                                <NavLink to={`/message`} target={`_blank`}>消息</NavLink>
+                                <NavLink to={`/message`} target={`_blank`}>
+                                    <div style={{marginTop:-25,paddingLeft:3,height:21}}>
+                                        <MessageIcon/>
+                                    </div>
+                                    <div style={{marginTop:-5,height:10}}>
+                                        <span>消息</span>
+                                    </div>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                         <Popover content={(
                             <div>动态</div>
                         )} title="动态">
                             <Menu.Item key="dynamic">
-                                <NavLink to={`/dynamic`} target={`_blank`}>动态</NavLink>
+                                <NavLink to={`/dynamic`} target={`_blank`}>
+                                    <div style={{marginTop:-25,paddingLeft:3,height:21}}>
+                                        <DynamicIcon/>
+                                    </div>
+                                    <div style={{marginTop:-5,height:10}}>
+                                        <span>动态</span>
+                                    </div>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                         <Popover content={(
@@ -168,7 +196,14 @@ class TopMenu extends Component {
                             </Tabs>
                         )}>
                             <Menu.Item key="favorite">
-                                <NavLink to={`/favorite`} target={`_blank`}>收藏</NavLink>
+                                <NavLink to={`/favorite`} target={`_blank`}>
+                                    <div style={{marginTop:-25,paddingLeft:3,height:21}}>
+                                        <FavoriteIcon/>
+                                    </div>
+                                    <div style={{marginTop:-5,height:10}}>
+                                        <span>收藏</span>
+                                    </div>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                         <Popover content={(
@@ -196,21 +231,39 @@ class TopMenu extends Component {
                             />
                         )}>
                             <Menu.Item key="history">
-                                <NavLink to={`/history`} target={`_blank`}>历史</NavLink>
+                                <NavLink to={`/history`} target={`_blank`}>
+                                    <div style={{marginTop:-25,paddingLeft:3,height:21}}>
+                                        <HistoryIcon/>
+                                    </div>
+                                    <div style={{marginTop:-5,height:10}}>
+                                        <span>历史</span>
+                                    </div>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                         <Popover content={(
                             <div>创作中心</div>
                         )} title="创作中心">
                             <Menu.Item key="writing-center">
-                                <NavLink to={`/writing_center`} target={`_blank`}>创作中心</NavLink>
+                                <NavLink to={`/writing_center`} target={`_blank`}>
+                                    <div style={{marginTop:-25,paddingLeft:18,height:21}}>
+                                        <WritingCenter/>
+                                    </div>
+                                    <div style={{marginTop:-5,height:10}}>
+                                        <span>创作中心</span>
+                                    </div>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                         <Popover content={(
                             <div>投稿</div>
                         )} title="投稿">
                             <Menu.Item key="upload">
-                                <NavLink to={`/member`} target={`_blank`}>投稿</NavLink>
+                                <NavLink to={`/member`} target={`_blank`}>
+                                    <Button style={{width:90,borderRadius:5,backgroundColor:'#fc85a7',textAlign:'center',color:'white'}}>
+                                        <UploadIcon/><span>投稿</span>
+                                    </Button>
+                                </NavLink>
                             </Menu.Item>
                         </Popover>
                     </Space>

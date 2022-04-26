@@ -3,6 +3,7 @@ import {Modal, Button, Layout, Image, Tabs, List, Input, Space, Row, Col, Avatar
 import {Link} from "react-router-dom";
 import cookie from 'react-cookies'
 import axios from "axios";
+import {BASE_URL} from 'utils/url'
 const {  Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
 const data = [
@@ -38,7 +39,7 @@ const UserAvatar = () => {
     };
 
     const commonLogin=()=>{
-        let _url='http://localhost:3000/api/user/commonLogin.ajax'
+        let _url=BASE_URL+'/api/user/commonLogin.ajax'
         axios.post(_url,{
             userName:commonLoginUserName,
             userPwd:commonLoginUserPwd

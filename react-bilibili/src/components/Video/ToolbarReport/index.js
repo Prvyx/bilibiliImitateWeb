@@ -4,6 +4,8 @@ import StarVideo from './StarVideo'
 import './index.css'
 import axios from "axios";
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 class ToolbarReport extends Component {
     render() {
         const {thumbUpCount,coinCount,starCount,forwardCount,thumbUp,isCoin,video_id}=this.props
@@ -12,7 +14,7 @@ class ToolbarReport extends Component {
             <div className={`toolBar`}>
                 <ul className={`toolBarUl`}>
                     <li><Button type="link" onClick={()=>{
-                        let _url='http://localhost:3000/api/user/userThumbUpRecord.ajax'
+                        let _url=BASE_URL+'/api/user/userThumbUpRecord.ajax'
                         axios.post(_url,{userId:cookie.load('user_id'),videoId:video_id,isThumbUp:(!thumbUp).toString()})
                             .then(_d=>{
                                 console.log(_d.data)
@@ -23,7 +25,7 @@ class ToolbarReport extends Component {
                     }}>{thumbUp?'点过了':'点赞'} {thumbUpCount}</Button></li>
                     <li><Button type="link" onClick={()=>{
                         if(!isCoin){
-                            let _url='http://localhost:3000/api/user/userCoinRecord.ajax'
+                            let _url=BASE_URL+'/api/user/userCoinRecord.ajax'
                             axios.post(_url,{userId:cookie.load('user_id'),videoId:video_id})
                                 .then(_d=>{
                                     console.log(_d.data)

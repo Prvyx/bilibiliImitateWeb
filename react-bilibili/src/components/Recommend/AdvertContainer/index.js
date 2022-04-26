@@ -20,23 +20,26 @@ class AdvertContainer extends Component {
         let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897"
         let _d=await axios.get(_url+"/advertContainer_api");
         // console.log(_d)
-        const promises =_d.data.advertList.map(async (advertObj)=>{
+        // 暂时注释 提高渲染速度
+        /*const promises =_d.data.advertList.map(async (advertObj)=>{
             const result=await analyze(advertObj.imgUrl, { scale: 0.6,ignore: [ 'rgb(255,255,255)', 'rgb(0,0,0)']});
             // 下面这一行为啥有数据？我不理解。猜测：因为它使用了result，而result还没有定义，等到result有了定义才去打印
             // console.log('mainColor:'+JSON.parse(JSON.stringify(result[0].color)))
             return result[0].color
         })
 
-        const mainColors=await Promise.all(promises);
+        const mainColors=await Promise.all(promises);*/
+
         // 下面这行为啥有数据？可能和26代码一个原因
         // console.log(JSON.parse(JSON.stringify(mainColors)))
         // console.log("advertList")
         // 下面这行没数据，因为_d.data.advertList的定义和await无关
         // console.log(JSON.parse(JSON.stringify(_d.data.advertList)))
-        _d.data.advertList.map((advertObj,index)=>{
+        // 暂时注释 提高渲染速度
+        /*_d.data.advertList.map((advertObj,index)=>{
             advertObj.mainColor=mainColors[index]
             return advertObj
-        })
+        })*/
 
         // JSON.parse(JSON.stringify())将对象转为真实形态(console.log()是在延迟一段时间后执行的，这就是22行代码console.log(_d)可以打印出数据的原因)
         // console.log(JSON.parse(JSON.stringify(_d.data.advertList)))

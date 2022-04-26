@@ -4,12 +4,14 @@ import SpaceHeader from "./SpaceHeader";
 import SpaceContent from "./SpaceContent";
 import SpaceSider from "./SpaceSider";
 import axios from "axios";
+import {BASE_URL} from 'utils/url'
+
 
 class Space extends Component {
     state={}
 
     getUpBasicInfo=()=>{
-        let _url='http://localhost:3000/api/user/UpBasicInfo.ajax'
+        let _url=BASE_URL+'/api/user/UpBasicInfo.ajax'
         axios.post(_url,{userId:this.props.userId})
             .then(_d=>{
                 if(_d.data.status===0){

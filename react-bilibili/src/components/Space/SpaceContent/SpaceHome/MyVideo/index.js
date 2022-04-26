@@ -3,6 +3,8 @@ import {Card, List} from "antd";
 import axios from "axios";
 import './index.css'
 import {Link} from "react-router-dom";
+import {BASE_URL} from 'utils/url'
+
 const {Meta}=Card
 
 class MyVideo extends Component {
@@ -13,7 +15,7 @@ class MyVideo extends Component {
     }
 
     getMyVideoData=()=>{
-        let _url='http://localhost:3000/api/user/video4ByUserId.ajax'
+        let _url=BASE_URL+'/api/user/video4ByUserId.ajax'
         if(this.props.userId!=='-1'){
             axios.post(_url,{userId:this.props.userId})
                 .then(_d=>{

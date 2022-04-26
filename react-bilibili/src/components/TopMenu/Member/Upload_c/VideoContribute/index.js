@@ -3,6 +3,8 @@ import {Button, Form, Input, Upload, Tabs, message, Checkbox,Select} from "antd"
 import {UploadOutlined} from "@ant-design/icons";
 import axios from "axios";
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 const { Option } = Select;
 let imgFile;
 function handleChange(value) {
@@ -28,7 +30,7 @@ const loadVideo = function(file) {
 }
 const properties = {
     name: 'videoContributeForm',
-    // action: 'http://localhost:3000/api/getVideoContribute.ajax',
+    // action: BASE_URL+'/api/getVideoContribute.ajax',
     maxCount:1,
     onChange(info) {
         console.log(info.file.name)
@@ -87,7 +89,7 @@ class VideoContribute extends Component {
         formData.append('forwardPermission',values.forwardPermission||false)
         formData.append('userId',cookie.load('user_id'))
         console.log(formData)
-        let _url='http://localhost:3000/api/user/contribute/getVideoContribute.ajax'
+        let _url=BASE_URL+'/api/user/contribute/getVideoContribute.ajax'
         const config = {
             headers: { "Content-Type": "multipart/form-data" }
         };

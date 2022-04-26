@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Card, List} from "antd";
 import axios from "axios";
 import cookie from "react-cookies";
+import {BASE_URL} from 'utils/url'
+
 const {Meta}=Card
 class MyThumbUpVideo extends Component {
     state={}
@@ -10,7 +12,7 @@ class MyThumbUpVideo extends Component {
     }
     // 拉取最近点赞视频列表数据
     getThumbUpVideo(){
-        let _url='http://localhost:3000/api/user/thumbUpVideo.ajax'
+        let _url=BASE_URL+'/api/user/thumbUpVideo.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 if(_d.data.status===0){

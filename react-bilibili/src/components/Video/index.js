@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
 import {Descriptions, Layout} from 'antd'
-import PlayCountIcon from './Icon/PlayCountIcon'
-import BarrageCountIcon from "./Icon/BarrageCountIcon";
-import DateIcon from "./Icon/DateIcon";
-import ReprintPermissionsIcon from "./Icon/ReprintPermissionsIcon";
 import SendBar from "./SendBar";
 import ToolbarReport from "./ToolbarReport";
 import InfoText from "./InfoText";
@@ -14,6 +10,8 @@ import PlayerBlock from "./PlayerBlock";
 import {Route, Switch} from "react-router-dom";
 import cookie from 'react-cookies'
 import axios from "axios";
+import {BASE_URL} from 'utils/url'
+
 const {Content,Sider} = Layout
 
 class Video extends Component {
@@ -32,7 +30,7 @@ class Video extends Component {
         // let _api=`video${this.state.id}_api`
 
         // 向后台要数据
-        let _url='http://localhost:3000/api/video/videoDetail.ajax'
+        let _url=BASE_URL+'/api/video/videoDetail.ajax'
         axios.post(_url,{videoId:this.state.id,watchUserId:cookie.load('user_id')})
             .then(_d=>{
                 console.log(_d.data)

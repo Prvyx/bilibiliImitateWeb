@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Col, Row,Card,Empty,Button  } from "antd";
+import {Col, Row,Card,Empty,Button } from "antd";
 
 import './index.css'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {BASE_URL} from 'utils/url'
 
 const { Meta } = Card;
 
@@ -15,7 +16,7 @@ class RecommendContainer extends Component {
     getData=()=>{
         let _url="https://mock.apipost.cn/app/mock/project/4c4dab79-7a8c-41f5-aea0-5217549d2897/"
         let _api='recommendContainer_api'
-        axios.post('http://localhost:3000/api/video/recommendContainer.ajax',{userId:'1'})
+        axios.post(BASE_URL+'/api/video/recommendContainer.ajax',{userId:'1'})
             .then(_d=>{
                 if(_d.data.status===0){
                     this.setState({recommendList:_d.data.data})

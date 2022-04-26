@@ -9,6 +9,8 @@ import MyCoinVideo from "./MyCoinVideo";
 import MyThumbUpVideo from "./MyThumbUpVideo";
 import axios from "axios";
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 const {TabPane}=Tabs
 const {Meta}=Card
 
@@ -20,14 +22,14 @@ class SpaceHome extends Component {
     }
 
     getTopVideo=()=>{
-        let _url='http://localhost:3000/api/user/topVideo.ajax'
+        let _url=BASE_URL+'/api/user/topVideo.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 this.setState({topVideo:_d.data.data})
             })
     }
     getRepresentativeWork=()=>{
-        let _url='http://localhost:3000/api/user/representativeWork.ajax'
+        let _url=BASE_URL+'/api/user/representativeWork.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 this.setState({representativeWork:_d.data.data})

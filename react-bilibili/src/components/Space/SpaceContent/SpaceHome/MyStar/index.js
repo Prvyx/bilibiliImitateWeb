@@ -3,6 +3,8 @@ import {Card, List} from "antd";
 import cookie from 'react-cookies'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {BASE_URL} from 'utils/url'
+
 const {Meta}=Card
 const data2 = [
     {
@@ -35,7 +37,7 @@ class MyStar extends Component {
     state={}
     getVideo8BySpaceStar=()=>{
         if(this.props.userId!=='-1'){
-            let _url='http://localhost:3000/api/user/video8BySpaceStar.ajax'
+            let _url=BASE_URL+'/api/user/video8BySpaceStar.ajax'
             axios.post(_url,{userId:this.props.userId})
                 .then(_d=>{
                     console.log(_d.data)

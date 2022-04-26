@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Card, Layout, Menu} from "antd";
+import {Button, Layout, Menu} from "antd";
 import {LaptopOutlined, NotificationOutlined} from "@ant-design/icons";
 import {Link, Redirect, Route, Switch} from "react-router-dom";
 import MemberHome from "./MemberHome";
@@ -27,7 +27,6 @@ import cookie from 'react-cookies'
 
 const { SubMenu } = Menu;
 const {  Content, Sider } = Layout;
-const {Meta} = Card
 class member extends Component {
     render() {
         return (

@@ -3,11 +3,13 @@ import ReactPlayer from "react-player/lazy";
 import qs from 'querystring'
 import axios from "axios";
 import cookie from 'react-cookies'
+import {BASE_URL} from 'utils/url'
+
 
 class PlayerBlock extends Component {
     submitPlayRecord=()=>{
         const videoId=this.props.location.pathname.slice(7);
-        let _url='http://localhost:3000/api/user/userPlayRecord.ajax'
+        let _url=BASE_URL+'/api/user/userPlayRecord.ajax'
         axios.post(_url,{userId:cookie.load('user_id'),videoId:videoId})
             .then(_d=>{
                 console.log(_d.data)

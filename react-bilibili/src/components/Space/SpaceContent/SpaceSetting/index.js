@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {AndroidOutlined} from "@ant-design/icons";
-import {Tabs, Descriptions, Divider} from 'antd'
+import { Descriptions, Divider} from 'antd'
 
-const {TabPane}=Tabs
 class SpaceSetting extends Component {
     render() {
         return (

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Layout, Tabs, Radio, Space, List, Card} from 'antd';
+import {Tabs, List, Card} from 'antd';
 import './index.css'
-import {Link} from "react-router-dom";
 import axios from "axios";
 import cookie from "react-cookies";
+import {BASE_URL} from 'utils/url'
+
 
 const { TabPane } = Tabs;
 const {Meta} =Card
@@ -20,7 +21,7 @@ class SpaceContribute extends Component {
 
     // 拉取最新发布视频列表数据
     getLatestVideo(){
-        let _url='http://localhost:3000/api/user/latestVideo.ajax'
+        let _url=BASE_URL+'/api/user/latestVideo.ajax'
         console.log(cookie.load('user_id'))
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
@@ -29,7 +30,7 @@ class SpaceContribute extends Component {
     }
     // 拉取最多播放视频列表数据
     getPlayCountDescVideoData=()=>{
-        let _url='http://localhost:3000/api/user/mostPlayCountVideo.ajax'
+        let _url=BASE_URL+'/api/user/mostPlayCountVideo.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 this.setState({myStarDescVideoData:_d.data.data})
@@ -37,7 +38,7 @@ class SpaceContribute extends Component {
     }
     // 拉取最多收藏视频列表数据
     getStarNumberDescVideoData=()=>{
-        let _url='http://localhost:3000/api/user/mostStarVideo.ajax'
+        let _url=BASE_URL+'/api/user/mostStarVideo.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
                 this.setState({myPlayCountDescVideoData:_d.data.data})

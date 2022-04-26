@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import { Menu, Switch } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import { Card } from 'antd';
 const { Meta } = Card;
-const { SubMenu } = Menu;
 
 // submenu keys of first level
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
