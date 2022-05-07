@@ -7,3 +7,6 @@
     - 资料：
       - [Create React app 引用中使用绝对路径](https://juejin.cn/post/6844903850013360142)
       - [Create React app-Absolute Imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports)
+2. 设置一个盒子不透明度（opacity）为0，盒子内的文字不透明
+    - 使用background:rgba(0,0,0,0);而不是opacity:0
+    - 原因：后者有继承性，而前者无

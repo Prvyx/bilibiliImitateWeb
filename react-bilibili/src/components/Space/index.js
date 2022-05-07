@@ -23,17 +23,14 @@ class Space extends Component {
                         signatureContent:userBasicInfo.signature_content,
                     }
                     const spaceContentProps={
-                        userId:userBasicInfo.user_id
-                    }
-                    const spaceSiderProps={
                         userId:userBasicInfo.user_id,
+                        followedNumber:userBasicInfo.followed_number,
                         followerNumber:userBasicInfo.follower_number,
-                        fanNumber:userBasicInfo.fan_number,
                         thumbUpNumber:userBasicInfo.thumb_up_number,
                         playCount:userBasicInfo.play_count,
-                        announceContent:userBasicInfo.announce_content,
+                        announceContent:userBasicInfo.announce_content
                     }
-                    this.setState({spaceHeaderProps:spaceHeaderProps,spaceContentProps:spaceContentProps,spaceSiderProps:spaceSiderProps})
+                    this.setState({spaceHeaderProps:spaceHeaderProps,spaceContentProps:spaceContentProps})
                 }else {
                     console.log('up信息加载失败')
                 }
@@ -59,8 +56,7 @@ class Space extends Component {
                     <Layout>
                         <SpaceHeader spaceHeaderProps={this.state.spaceHeaderProps}/>
                         <Layout>
-                            <SpaceContent userId={this.props.userId}/>
-                            <SpaceSider spaceSiderProps={this.state.spaceSiderProps}/>
+                            <SpaceContent userId={this.props.userId} spaceContentProps={this.state.spaceContentProps}/>
                         </Layout>
                     </Layout>
                 </div>

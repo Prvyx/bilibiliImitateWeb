@@ -95,7 +95,7 @@ class VideoContribute extends Component {
         };
         axios.post(_url,formData)
             .then(_d=>{
-                console.log(_d.data)
+                alert(_d.data.data.msg);
             })
     };
 

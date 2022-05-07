@@ -71,7 +71,7 @@ const UserAvatar = () => {
                                         showModal();
                                     }}>立即登录</Button>
                                 )} title="登陆后你可以">
-                                    <Button type="primary" shape="circle" onClick={showModal}>
+                                    <Button type="primary" shape="circle" onClick={showModal} style={{marginLeft:30,border: '1px solid #ffffff'}}>
                                         登录
                                     </Button>
                                 </Popover>

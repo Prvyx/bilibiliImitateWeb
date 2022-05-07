@@ -106,7 +106,10 @@ class TopMenu extends Component {
                             <NavLink to={`/competition`} target={`_blank`}>赛事</NavLink>
                         </Menu.Item>
                         <li className={`top-menu-input`} style={{marginLeft:-10}}>
-                            <Search placeholder="input search text" onSearch={onSearch} enterButton />
+                            <Search placeholder="input search text"
+                                    onSearch={onSearch} enterButton
+                                    style={{height:32}}
+                            />
                         </li>
                         <Menu.Item key="user" style={{marginLeft: -5}}>
                             <UserAvatar/>
@@ -260,7 +263,7 @@ class TopMenu extends Component {
                         )} title="投稿">
                             <Menu.Item key="upload">
                                 <NavLink to={`/member`} target={`_blank`}>
-                                    <Button style={{width:90,borderRadius:5,backgroundColor:'#fc85a7',textAlign:'center',color:'white'}}>
+                                    <Button style={{width:90,borderRadius:5,backgroundColor:'#fc85a7',border: 0,textAlign:'center',color:'white'}}>
                                         <UploadIcon/><span>投稿</span>
                                     </Button>
                                 </NavLink>

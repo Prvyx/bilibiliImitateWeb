@@ -76,7 +76,7 @@ class Video extends Component {
                         <ToolbarReport {...sanlian} callback1={this.callback1}/>
                     </Content>
                     <Sider width={370} style={{backgroundColor: "#ffffff"}}>
-                        <UpInfo name={videoData.user_name} userAvatarPath={videoData.user_avatar_path}/>
+                        <UpInfo otherUserId={videoData.user_id} name={videoData.user_name} userAvatarPath={videoData.user_avatar_path}/>
                         <VideoList id={videoData.video_id} parts={videoData.videoSelections}/>
                     </Sider>
                 </Layout>

@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import './App.less';
 import 'antd/dist/antd.less';
-import { Layout,BackTop} from 'antd';
+import {Layout, BackTop, Button} from 'antd';
 import {Redirect, Route, Switch} from "react-router-dom";
 
 // 自定义一般组件
@@ -46,7 +46,7 @@ function App() {
   const [top, setTop] = useState(10);
   const [bottom, setBottom] = useState(10);
   return (
-    <div>
+    <div style={{position:'relative'}}>
         <TopMenu/>
 
         {/*注册路由*/}
@@ -89,7 +89,7 @@ function App() {
         </Switch>
 
         <Footer>本站点是简易版小破站</Footer>
-        <BackTop style={{marginRight:-55}}>
+        <BackTop style={{marginRight:-55,bottom:22}}>
             <div style={{
                 height: 40,
                 width: 40,
@@ -101,6 +101,7 @@ function App() {
                 fontSize: 12,
             }}>顶部</div>
         </BackTop>
+
     </div>
   );
 }

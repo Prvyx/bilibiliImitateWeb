@@ -10,3 +10,24 @@
     background-position: top;
     border-radius: 8px;
 }
+/*
+Carousel走马灯增加自定义arrow功能:https://github.com/ant-design/ant-design/issues/12479
+的Echo-minn回答
+*/
+.ant-carousel .slick-prev,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-prev:focus {
+    font-size: 20px;
+    left: 10px;
+    z-index: 2;
+    color: #49433c;
+}
+
+.ant-carousel .slick-next,
+.ant-carousel .slick-next:hover,
+.ant-carousel .slick-next:focus {
+    font-size: 20px;
+    right: 10px;
+    z-index: 2;
+    color: #49433c;
+}

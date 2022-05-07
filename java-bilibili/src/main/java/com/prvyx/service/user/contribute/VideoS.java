@@ -49,7 +49,7 @@ public class VideoS {
                 sqlSession.commit();
 
                 // 将视频存储在指定位置
-                File file=new File(produceEnv+videoId);
+                File file=new File(developmentEnv+videoId);
                 if(!file.exists()){
                     file.mkdirs();
                 }else {
@@ -70,7 +70,7 @@ public class VideoS {
                 }
 
                 //将首页图片存放至指定位置
-                file=new File(produceEnv+videoId);
+                file=new File(developmentEnv+videoId);
                 file=new File(file.getAbsoluteFile()+File.separator+"img.png");
 
                 try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))){

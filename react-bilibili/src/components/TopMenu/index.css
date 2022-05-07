@@ -17,7 +17,15 @@
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
     top: 4px;
     left: 20px;
-    border-radius: 6px;
+}
+/*搜索按钮样式 动高度没用，直接把背景设为透明色*/
+.ant-input-search > .ant-input-group > .ant-input-group-addon {
+    background:rgba(255,0,0,0);
+
+}
+/*搜索按钮样式：修改圆角值*/
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+    border-radius : 0 6px 6px 0;
 }
 /*������*/
 .top-menu-input {
@@ -25,10 +33,10 @@
 }
 /*top_menu*/
 .top_menu {
-    margin: 0 20px;
     height: 200px;
     background: #ffffff url("/public/index.png") no-repeat top;
     background-size: 120%;
+    color: #ffffff;
 }
 
 /*ͷ��*/
@@ -39,5 +47,8 @@
 }
 /*������*/
 .navMenu {
-
+    margin: 0 20px;
+    padding-bottom: 100px;
+    background:rgba(0,0,0,0);
+    color: #ffffff;
 }

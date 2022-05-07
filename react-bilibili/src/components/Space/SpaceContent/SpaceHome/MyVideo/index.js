@@ -27,7 +27,7 @@ class MyVideo extends Component {
         }
     }
     render() {
-        console.log(this.props.userId);
+
         const myVideoData=this.state.myVideoData||[]
         return (
             <div className={`myVideo`}>

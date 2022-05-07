@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {FireOutlined} from '@ant-design/icons'
 import {Row, Col} from 'antd';
 import {Link, NavLink} from 'react-router-dom'
 import './index.css'
@@ -24,7 +23,7 @@ class Catalog extends Component {
                         <Row  gutter={[0,8]} justify="center">
                             <Col span={5}>
                                 <NavLink to={`/dynamic`} target={`_blank`}>
-                                    <div style={{marginLeft:13,width:40,height:40,borderRadius:20,backgroundColor:'#ff9212'}}>
+                                    <div style={{marginLeft:8,width:40,height:40,borderRadius:20,backgroundColor:'#ff9212'}}>
                                         <DynamicIcon style={{marginTop:8,marginLeft:2}}/>
                                     </div>
                                     <div style={{height:10}}>
@@ -34,7 +33,7 @@ class Catalog extends Component {
                             </Col>
                             <Col span={5}>
                                 <NavLink to={`/hot`} target={`_blank`}>
-                                    <div style={{marginLeft:13,width:40,height:40,borderRadius:20,backgroundColor:'#f07775'}}>
+                                    <div style={{marginLeft:8,width:40,height:40,borderRadius:20,backgroundColor:'#f07775'}}>
                                         <HotIcon style={{marginTop:8,marginLeft:2}}/>
                                     </div>
                                     <div style={{height:10}}>
@@ -44,7 +43,7 @@ class Catalog extends Component {
                             </Col>
                             <Col span={5}>
                                 <NavLink to={`/channel`} target={`_blank`}>
-                                    <div style={{marginLeft:12,width:40,height:40,borderRadius:20,backgroundColor:'#59ca73'}}>
+                                    <div style={{marginLeft:8,width:40,height:40,borderRadius:20,backgroundColor:'#59ca73'}}>
                                         <ChannelIcon style={{marginTop:8,marginLeft:2}}/>
                                     </div>
                                     <div style={{height:10}}>
@@ -115,22 +114,22 @@ class Catalog extends Component {
                     <Col span={5} className={`channel-items__right`} style={{marginLeft:50,borderLeft:'1px solid #e3e5e7'}}>
                         <Row gutter={[1,8]} justify="center">
                             <Col span={8}>
-                                <div><ColumnIcon/><span>专栏</span></div>
+                                <NavLink to={`/`}><ColumnIcon/><span>专栏</span></NavLink>
                             </Col>
                             <Col span={8}>
-                                <ActivityIcon/><span>活动</span>
+                                <NavLink to={`/`}><ActivityIcon/><span>活动</span></NavLink>
                             </Col>
                             <Col span={8}>
-                                <CommunityIcon/><span>社区中心</span>
+                                <NavLink to={`/`}><CommunityIcon/><span>社区中心</span></NavLink>
                             </Col>
                             <Col span={8}>
-                                <LiveIcon/><span>直播</span>
+                                <NavLink to={`/`}><LiveIcon/><span>直播</span></NavLink>
                             </Col>
                             <Col span={8}>
-                                <ClassroomIcon/><span>课堂</span>
+                                <NavLink to={`/`}><ClassroomIcon/><span>课堂</span></NavLink>
                             </Col>
                             <Col span={8}>
-                                <NewSong/><span>新歌热榜</span>
+                                <NavLink to={`/`}><NewSong/><span>新歌热榜</span></NavLink>
                             </Col>
                         </Row>
                     </Col>

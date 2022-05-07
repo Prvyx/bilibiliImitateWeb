@@ -5,6 +5,7 @@ import './index.css'
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {BASE_URL} from 'utils/url'
+import PlayCountIcon from "./Icon/PlayCountIcon";
 
 const { Meta } = Card;
 
@@ -50,12 +51,20 @@ class RecommendContainer extends Component {
                                             hoverable
                                             style={{ width: "100%" ,height:"100%"}}
                                             cover={
-                                                <Link to={`/video/${recommendObj.video_id}`} target={'_blank'}>
+                                                <Link to={`/video/${recommendObj.video_id}`} target={'_blank'}
+                                                      style={{position:'relative'}}
+                                                >
                                                     <img
                                                         alt="example"
                                                         src={recommendObj.video_img_path}
                                                         style={{width:'100%',height:'100%',borderRadius:8}}
                                                     />
+                                                    <div style={{position:'absolute',top:90,left:8,color:'#ffffff'}}>
+                                                        <PlayCountIcon/>{recommendObj.video_play_count}
+                                                    </div>
+                                                    <div style={{position:'absolute',top:90,right:8,color:'#ffffff'}}>
+                                                        {recommendObj.duration}
+                                                    </div>
                                                 </Link>}
                                             size={"small"}
                                         >
@@ -68,7 +77,7 @@ class RecommendContainer extends Component {
                                 )
                             })
                         }
-                        <Button type="primary"
+                        <Button
                                 style={{position:'absolute',top:10,right:10,padding: '0 10px',width: 40,height:80,borderRadius: 8}}
                                 onClick={this.getData}
                         >

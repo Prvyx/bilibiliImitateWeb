@@ -9,7 +9,7 @@ public class UpBasicInfo {
     private String is_vip;
     private String play_count;
     private String thumb_up_number;
-    private String fan_number;
+    private String followed_number;
     private String follower_number;
     private String announce_content;
     private String signature_content;
@@ -17,7 +17,7 @@ public class UpBasicInfo {
     public UpBasicInfo() {
     }
 
-    public UpBasicInfo(String user_id, String user_name, String user_avatar_path, String is_man, String grade, String is_vip, String play_count, String thumb_up_number, String fan_number, String follower_number, String announce_content, String signature_content) {
+    public UpBasicInfo(String user_id, String user_name, String user_avatar_path, String is_man, String grade, String is_vip, String play_count, String thumb_up_number, String followed_number, String follower_number, String announce_content, String signature_content) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.user_avatar_path = user_avatar_path;
@@ -26,7 +26,7 @@ public class UpBasicInfo {
         this.is_vip = is_vip;
         this.play_count = play_count;
         this.thumb_up_number = thumb_up_number;
-        this.fan_number = fan_number;
+        this.followed_number = followed_number;
         this.follower_number = follower_number;
         this.announce_content = announce_content;
         this.signature_content = signature_content;
@@ -96,12 +96,12 @@ public class UpBasicInfo {
         this.thumb_up_number = thumb_up_number;
     }
 
-    public String getFan_number() {
-        return fan_number;
+    public String getfollowed_number() {
+        return followed_number;
     }
 
-    public void setFan_number(String fan_number) {
-        this.fan_number = fan_number;
+    public void setfollowed_number(String followed_number) {
+        this.followed_number = followed_number;
     }
 
     public String getFollower_number() {
@@ -139,7 +139,7 @@ public class UpBasicInfo {
                 ", is_vip='" + is_vip + '\'' +
                 ", play_count='" + play_count + '\'' +
                 ", thumb_up_number='" + thumb_up_number + '\'' +
-                ", fan_number='" + fan_number + '\'' +
+                ", followed_number='" + followed_number + '\'' +
                 ", follower_number='" + follower_number + '\'' +
                 ", announce_content='" + announce_content + '\'' +
                 ", signature_content='" + signature_content + '\'' +

@@ -15,6 +15,7 @@ public class VideoDetail {
     private int video_coin_number;
     private int video_star_number;
     private int video_forward_number;
+    private String user_id;
     private String user_name;
     private String user_avatar_path;
     private List<VideoSelection> videoSelections;
@@ -24,7 +25,7 @@ public class VideoDetail {
     public VideoDetail() {
     }
 
-    public VideoDetail(String video_id, String video_title, String introduce, String video_path, boolean is_forward_allowed, String video_datetime, int video_play_count, int video_barrage_count, int video_thumb_up_number, int video_coin_number, int video_star_number, int video_forward_number, String user_name, String user_avatar_path, List<VideoSelection> videoSelections, Boolean isThumbUp, Boolean isCoin) {
+    public VideoDetail(String video_id, String video_title, String introduce, String video_path, boolean is_forward_allowed, String video_datetime, int video_play_count, int video_barrage_count, int video_thumb_up_number, int video_coin_number, int video_star_number, int video_forward_number,String user_id, String user_name, String user_avatar_path, List<VideoSelection> videoSelections, Boolean isThumbUp, Boolean isCoin) {
         this.video_id = video_id;
         this.video_title = video_title;
         this.introduce = introduce;
@@ -37,6 +38,7 @@ public class VideoDetail {
         this.video_coin_number = video_coin_number;
         this.video_star_number = video_star_number;
         this.video_forward_number = video_forward_number;
+        this.user_id=user_id;
         this.user_name = user_name;
         this.user_avatar_path = user_avatar_path;
         this.videoSelections = videoSelections;
@@ -148,6 +150,14 @@ public class VideoDetail {
         this.video_forward_number = video_forward_number;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     public String getUser_name() {
         return user_name;
     }
@@ -195,6 +205,7 @@ public class VideoDetail {
                 ", video_coin_number=" + video_coin_number +
                 ", video_star_number=" + video_star_number +
                 ", video_forward_number=" + video_forward_number +
+                ", user_id='" + user_id + '\'' +
                 ", user_name='" + user_name + '\'' +
                 ", user_avatar_path='" + user_avatar_path + '\'' +
                 ", videoSelections=" + videoSelections +

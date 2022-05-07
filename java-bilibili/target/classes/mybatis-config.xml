@@ -38,10 +38,9 @@
         <mapper resource="com/prvyx/mapper/video/CheckVideoExistStarDirMapper.xml"/>
         <mapper resource="com/prvyx/mapper/video/InsertUserStarVideoMapper.xml"/>
         <mapper resource="com/prvyx/mapper/video/DeleteUserStarVideoMapper.xml"/>
-        <mapper resource="com/prvyx/mapper/user/UserFanMapper.xml"/>
-        <mapper resource="com/prvyx/mapper/user/UserFocusMapper.xml"/>
         <mapper resource="com/prvyx/mapper/user/SpaceVideoMapper.xml"/>
         <mapper resource="com/prvyx/mapper/user/UserWatchVideoHistoryMapper.xml"/>
         <mapper resource="com/prvyx/mapper/user/CreateNewStarDirMapper.xml"/>
+        <mapper resource="com/prvyx/mapper/user/focus/FocusMapper.xml"/>
     </mappers>
 </configuration>

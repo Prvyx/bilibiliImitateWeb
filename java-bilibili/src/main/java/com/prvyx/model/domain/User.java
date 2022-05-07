@@ -9,7 +9,7 @@ public class User {
     private boolean is_vip;
     private int play_count;
     private int thumb_up_number;
-    private int fan_number;
+    private int followed_number;
     private int follower_number;
     private String announce_content;
     private String signature_content;
@@ -17,7 +17,7 @@ public class User {
     public User() {
     }
 
-    public User(String user_id, String user_name, String user_avatar_path, boolean is_man, int grade, boolean is_vip, int play_count, int thumb_up_number, int fan_number, int follower_number, String announce_content, String signature_content) {
+    public User(String user_id, String user_name, String user_avatar_path, boolean is_man, int grade, boolean is_vip, int play_count, int thumb_up_number, int followed_number, int follower_number, String announce_content, String signature_content) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.user_avatar_path = user_avatar_path;
@@ -26,7 +26,7 @@ public class User {
         this.is_vip = is_vip;
         this.play_count = play_count;
         this.thumb_up_number = thumb_up_number;
-        this.fan_number = fan_number;
+        this.followed_number = followed_number;
         this.follower_number = follower_number;
         this.announce_content = announce_content;
         this.signature_content = signature_content;
@@ -96,12 +96,12 @@ public class User {
         this.thumb_up_number = thumb_up_number;
     }
 
-    public int getFan_number() {
-        return fan_number;
+    public int getFollowed_number() {
+        return followed_number;
     }
 
-    public void setFan_number(int fan_number) {
-        this.fan_number = fan_number;
+    public void setFollowed_number(int followed_number) {
+        this.followed_number = followed_number;
     }
 
     public int getFollower_number() {
@@ -139,7 +139,7 @@ public class User {
                 ", is_vip=" + is_vip +
                 ", play_count=" + play_count +
                 ", thumb_up_number=" + thumb_up_number +
-                ", fan_number=" + fan_number +
+                ", followed_number=" + followed_number +
                 ", follower_number=" + follower_number +
                 ", announce_content='" + announce_content + '\'' +
                 ", signature_content='" + signature_content + '\'' +

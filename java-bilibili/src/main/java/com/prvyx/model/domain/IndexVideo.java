@@ -6,18 +6,20 @@ public class IndexVideo {
     private String video_img_path;
     private int video_play_count;
     private int video_thumb_up_number;
+    private String duration;
     private String video_datetime;
     private String user_name;
 
     public IndexVideo() {
     }
 
-    public IndexVideo(String video_id, String video_title, String video_img_path, int video_play_count, int video_thumb_up_number, String video_datetime, String user_name) {
+    public IndexVideo(String video_id, String video_title, String video_img_path, int video_play_count, int video_thumb_up_number, String duration, String video_datetime, String user_name) {
         this.video_id = video_id;
         this.video_title = video_title;
         this.video_img_path = video_img_path;
         this.video_play_count = video_play_count;
         this.video_thumb_up_number = video_thumb_up_number;
+        this.duration = duration;
         this.video_datetime = video_datetime;
         this.user_name = user_name;
     }
@@ -62,6 +64,14 @@ public class IndexVideo {
         this.video_thumb_up_number = video_thumb_up_number;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     public String getVideo_datetime() {
         return video_datetime;
     }
@@ -86,6 +96,7 @@ public class IndexVideo {
                 ", video_img_path='" + video_img_path + '\'' +
                 ", video_play_count=" + video_play_count +
                 ", video_thumb_up_number=" + video_thumb_up_number +
+                ", duration='" + duration + '\'' +
                 ", video_datetime='" + video_datetime + '\'' +
                 ", user_name='" + user_name + '\'' +
                 '}';

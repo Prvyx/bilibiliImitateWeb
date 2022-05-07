@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prvyx.mapper.user.focus.FocusMapper">
+    <select id="isFocus" resultType="string">
+        select follower_user_id
+        from focus_action
+        where follower_user_id=#{userId} and followed_user_id=#{otherId};
+    </select>
+    <select id="whoFocusMe" resultType="com.prvyx.model.domain.focus.FollowerOrFocus">
+        select follower_user_id,followed_user_id,focus_datetime,user_name
+        from focus_action,user
+        where focus_action.follower_user_id=user.user_id and followed_user_id=#{userId}
+    </select>
+    <select id="iFocusWho" resultType="com.prvyx.model.domain.focus.FollowerOrFocus">
+        select follower_user_id,followed_user_id,focus_datetime,user_name
+        from focus_action,user
+        where focus_action.followed_user_id=user.user_id and follower_user_id=#{userId}
+    </select>
+
+    <insert id="userAddFocusRecord">
+        insert into focus_action(follower_user_id, followed_user_id, focus_datetime)
+        values (#{userId},#{focusUserId},#{focusDateTime})
+    </insert>
+    <delete id="userDeleteFocusRecord">
+        delete from focus_action
+        where follower_user_id=#{userId} and followed_user_id=#{focusUserId}
+    </delete>
+    <update id="addFollower">
+        update user set follower_number=follower_number+1
+        where user_id=#{userId}
+    </update>
+    <update id="subFollower">
+        update user set follower_number=follower_number-1
+        where user_id=#{userId}
+    </update>
+    <update id="addFollowed">
+        update user set followed_number=followed_number+1
+        where user_id=#{userId}
+    </update>
+    <update id="subFollowed">
+        update user set followed_number=followed_number-1
+        where user_id=#{userId}
+    </update>
+</mapper>

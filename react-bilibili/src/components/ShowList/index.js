@@ -90,12 +90,19 @@ class ShowList extends Component {
                                 </Row>
                             </div>
                         </Card>
-                        <Button type="primary" style={{position:'absolute',top:20,right:15}}
+                        <Button type="primary" style={{position:'absolute',top:20,right:100}}
                                 onClick={()=>{
                                     this.getShowList(this.props.id)
                                 }}
                         >
                             <div>换一换</div>
+                        </Button>
+                        <Button type="primary" style={{position:'absolute',top:20,right:0}}
+                                onClick={()=>{
+                                    this.getShowList(this.props.id)
+                                }}
+                        >
+                            <div>查看更多</div>
                         </Button>
                     </Content>
                     <ShowListRank id={this.props.id}/>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import {Col,Carousel } from "antd";
 import analyze from 'rgbaster'
+import {LeftSquareFilled,RightSquareFilled} from '@ant-design/icons'
 
 import './index.css'
 
@@ -55,7 +56,7 @@ class AdvertContainer extends Component {
         // console.log("render中:",this.state.advertList)
         return (
             <Col id={`advertID`} span={9} style={{backgroundColor: "",borderRadius: 8,maxHeight:338}}>
-                <Carousel autoplay>
+                <Carousel autoplay arrows="true" prevArrow={<LeftSquareFilled /> } nextArrow={<RightSquareFilled/>} lazyLoad='true'>
                     {
                         (this.state.advertList||[]).map((advertObj)=>{
                             // console.log('map2:',JSON.stringify(advertObj.mainColor))
