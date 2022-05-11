@@ -52,3 +52,9 @@
     background:rgba(0,0,0,0);
     color: #ffffff;
 }
+
+/*设置TopMenu中链接文字的样式*/
+.TopMenuSpaceStyle a {
+    color:#ffffff;
+    cursor: pointer;
+}

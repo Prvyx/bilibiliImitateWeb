@@ -21,7 +21,7 @@ class SpaceHeader extends Component {
                 <div style={{position: "absolute",bottom: '20px',left: '20px',width:'70%',height: 64}}>
                     <Row style={{height: 64}}>
                         <Col flex="64px">
-                            <Avatar className={`avatar`} style={{width:64,height:64,marginLeft:0}}
+                            <Avatar className={`avatar`} style={{width:64,height:64,marginLeft:0,border:'2px solid #dddfea'}}
                                     src={
                                         <Link to={`${avatarImgPath}`} target={`_blank`}>
                                             <img alt={`example`}
@@ -33,11 +33,13 @@ class SpaceHeader extends Component {
                             />
                         </Col>
                         <Col flex="auto">
-                            <div style={{padding: 1,height:32,backgroundColor:"red",textAlign:"left"}}>
-                                <span>{userName} Lv{grade}</span>
-                            </div>
-                            <div style={{height:32,backgroundColor:"green",textAlign:"left"}}>
-                                <span>{signatureContent}</span>
+                            <div style={{marginLeft:20}}>
+                                <div style={{padding: 1,height:32,textAlign:"left",lineHeight:3,fontSize:15,color:'#ffffff'}}>
+                                    <span>{userName} Lv{grade}</span>
+                                </div>
+                                <div style={{height:32,textAlign:"left",lineHeight:3,fontSize:15,color:'#ffffff'}}>
+                                    <span>{signatureContent}</span>
+                                </div>
                             </div>
                         </Col>
                     </Row>

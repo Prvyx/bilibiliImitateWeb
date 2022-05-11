@@ -4,6 +4,9 @@ import {Button, Form, Tabs, Upload, message, Input, Space} from "antd";
 import {InboxOutlined,UploadOutlined} from "@ant-design/icons";
 import VideoUploadFrame from "./VideoUploadFrame";
 import VideoContribute from "./VideoContribute";
+import cookie from "react-cookies";
+import {BASE_URL} from 'utils/url'
+
 const {TabPane}=Tabs
 const { Dragger } = Upload;
 
@@ -28,6 +31,27 @@ class Upload_c extends Component {
     };
 
     render() {
+        const props = {
+            name: 'videoFile',
+            multiple: false,
+            accept:'video/mp4',
+            data:{userId:cookie.load('user_id')},
+            action: BASE_URL+'/api/user/contribute/uploadVideo.ajax',
+            onChange(info) {
+                if (info.file.status !== 'uploading') {
+                    console.log(info.file, info.fileList);
+                }
+                if (info.file.status === 'done') {
+                    message.success(`${info.file.name} file uploaded successfully`);
+                } else if (info.file.status === 'error') {
+                    message.error(`${info.file.name} file upload failed.`);
+                }
+
+            },
+            onDrop(e) {
+                console.log('Dropped files', e.dataTransfer.files);
+            },
+        };
         return (
             <Tabs defaultActiveKey="1" onChange={this.callback}>
                 <TabPane tab="视频投稿" key="1">
@@ -35,6 +59,9 @@ class Upload_c extends Component {
                 </TabPane>
                 <TabPane tab="专栏投稿" key="2">
                     专栏投稿
+                    <Upload {...props} >
+                        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                    </Upload>
                 </TabPane>
                 <TabPane tab="互动视频投稿" key="3">
                     <Form.Item label="">

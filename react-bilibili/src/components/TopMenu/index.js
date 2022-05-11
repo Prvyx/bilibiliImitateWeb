@@ -35,6 +35,7 @@ import UploadIcon from "./Icon/UploadIcon";
 const { Search } = Input;
 const { TabPane } = Tabs;
 const onSearch = value => {};
+
 class TopMenu extends Component {
     state = {
         current: 'mail',
@@ -67,7 +68,6 @@ class TopMenu extends Component {
         let _url=BASE_URL+'/api/user/watchVideoHistory.ajax'
         axios.post(_url,{userId:cookie.load('user_id')})
             .then(_d=>{
-                console.log(_d.data.data)
                 if(_d.data.status===0){
                     this.setState({userWatchHistoryList:_d.data.data})
                 }
@@ -83,7 +83,7 @@ class TopMenu extends Component {
         return (
             <div className={`top_menu`}>
                 <Menu className={`navMenu`} onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
-                    <Space size="small">
+                    <Space size="small" className='TopMenuSpaceStyle'>
                         <Menu.Item key="index"  icon={<BilibiliIcon/>} >
                             <Link to={`/`}>首页</Link>
                         </Menu.Item>

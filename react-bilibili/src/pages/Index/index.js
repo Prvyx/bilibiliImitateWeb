@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import Recommend from "../../components/Recommend";
 import ShowList from "../../components/ShowList";
 import Catalog from "../../components/Catalog";
-import {Button} from "antd";
+import CategoryScroll from './CategoryScroll'
+import {Button,Popover} from "antd";
 
 class Index extends Component {
     render() {
@@ -21,12 +22,7 @@ class Index extends Component {
                 <ShowList id={`sports`}>运动</ShowList>
                 <ShowList id={`foods`}>美食</ShowList>
                 <div style={{position:'fixed',top:400,right:45}}>
-                    <Button
-                        style={{marginBottom:8,padding: '0 10px',width: 40,height:50,borderRadius: 8}}
-                    >
-                        <div>分</div>
-                        <div>区</div>
-                    </Button>
+                    <CategoryScroll/>
                     <br/>
                     <Button
                         style={{padding: '0 10px',width: 40,height:50,borderRadius: 8}}

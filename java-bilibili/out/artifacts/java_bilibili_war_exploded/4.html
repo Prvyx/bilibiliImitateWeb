@@ -1,0 +1,235 @@
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #181a1b !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body, input, textarea, select, button {
+    background-color: #181a1b;
+}
+html, body, input, textarea, select, button {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #404400 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ffmpeg wasm截取视频帧功能</title>
+    <style>
+        input,label,p {font-size:16px}
+        body {margin: 20px}
+        @media (max-width: 700px) {input{display:block;margin-bottom:15px}}
+    </style><style class="darkreader darkreader--sync" media="screen"></style>
+<meta name="darkreader" content="84674827b89d48f1af5db48e64e34a0f"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1 {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }</style><input type="hidden" id="_w_pedant"><script type="text/javascript" src="chrome-extension://dbjbempljhcmhlfpfacalomonjpalpko/scripts/inspector.js"></script></head>
+<body>
+<form style="margin-bottom: 20px;">
+    <p>请选择一个视频（本地操作不会上传）</p>
+    <input type="file" required="" name="file">
+    <label>时间(秒)</label><input type="number" step="1" value="0" required="" name="time">
+    <input type="submit" value="获取图像" style="font-size:16px;">
+</form>
+
+<div id="error-tip"></div>
+<canvas width="1240" height="697" id="canvas"></canvas>
+<script src="index.js"></script>
+<script>
+!function() {
+    let setFile = null;
+    let $text = document.querySelector('#text-tip'),
+        $errorTip = document.querySelector('#error-tip');
+    if (!window.WebAssembly) {
+        let tip = '你的浏览器不支持WASM!';
+        if (/iPhone|iPad/.test(window.navigator.userAgent)) {
+            tip += ' ios需要11以上版本'
+        }
+        $text.textContent = tip;
+        return;
+    }
+    let form = document.querySelector('form');
+    Module.onRuntimeInitialized = function () {
+        setFile = Module.cwrap('setFile', 'number', ['number', 'number', 'number']);
+        $text.textContent = 'WASM初始化完毕，请选择视频文件';
+        setTimeout(() => $text.remove(), 3000);
+        console.log('WASM initialized done!');
+        if (form.file.value) {
+            process();
+        }
+        // console.log(setFile(5));
+    };
+    form.onsubmit = form.file.onchange = process;
+    function process (event) {
+        if (!form.file.value) {
+            return;
+        }
+        event && event.preventDefault();
+        let fileReader = new FileReader();
+        fileReader.onload = function () {
+            if (!setFile) {
+                // alert('WASM未加载解析完毕，请稍候');
+                // form.file.value = '';
+                return;
+            }
+            // console.log(buffer.length);
+            // console.log(buffer);
+            // let ptr = setFile(buffer, buffer.length);
+            // console.log(offset);
+            let ptr = 0;
+            let offset = 0;
+            try {
+                let buffer = new Uint8Array(this.result);
+                offset = Module._malloc(buffer.length);
+                console.log(offset);
+                Module.HEAP8.set(buffer, offset);
+                ptr = setFile(offset, buffer.length, +form.time.value * 1000);
+            } catch (e) {
+                $errorTip.innerHtml = 'oh, no! 不小心挂了，请刷新页面重试';
+                throw e;
+            }
+            let width = Module.HEAPU32[ptr / 4]
+                height = Module.HEAPU32[ptr / 4 + 1],
+                imgBufferPtr = Module.HEAPU32[ptr / 4 + 2],
+                imageBuffer = Module.HEAPU8.subarray(imgBufferPtr, imgBufferPtr + width * height * 3);
+            if (!width || !height) {
+                $errorTip.textContent = '获取图片帧失败，图片宽高为0，时间可能超限';
+                return;
+            }
+            drawImage(width, height, imageBuffer);
+            Module._free(offset);
+            Module._free(ptr);
+            Module._free(imgBufferPtr);
+        };
+        // console.log(form.file.files[0]);
+        let file = form.file.files[0];
+        if (file.type && file.type.indexOf('video') !== 0) {
+            $errorTip.textContent = '您选择的类型是：' + file.type + '不是一个视频文件';
+            return;
+        }
+        $errorTip.textContent = '';
+        fileReader.readAsArrayBuffer(file);
+    };
+    // 内存画布
+    let memCanvas = document.createElement('canvas'),
+        memContext = memCanvas.getContext('2d');
+    let canvas = document.querySelector('#canvas'),
+        ctx = canvas.getContext('2d');
+    canvas.width = Math.max(600, window.innerWidth - 40);
+
+    function drawImage(width, height, buffer) {
+        let imageData = ctx.createImageData(width, height);
+        let k = 0;
+        for (let i = 0; i < buffer.length; i++) {
+            if (i && i % 3 === 0) {
+                imageData.data[k++] = 255;
+            }
+            imageData.data[k++] = buffer[i];
+        }
+        imageData.data[k] = 255;
+        memCanvas.width = width;
+        memCanvas.height = height;
+        canvas.height = canvas.width * height / width;
+        memContext.putImageData(imageData, 0, 0, 0, 0, width, height);
+        ctx.drawImage(memCanvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+    }
+}();
+</script>
+
+
+</body></html>
